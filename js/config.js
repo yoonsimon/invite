@@ -17,9 +17,9 @@ const CONFIG = {
 
   // ===== 예식 정보 =====
   wedding: {
-    date: '2026-06-20',        // YYYY-MM-DD
+    date: '2027-05-15',        // YYYY-MM-DD
     time: '14:00',             // HH:mm (24시간)
-    displayDate: '2026년 6월 20일 토요일 오후 2시',
+    displayDate: '2027년 5월 15일 토요일 오후 2시',
     venue: '○○웨딩홀',
     hall: '○층 ○○홀',
     address: '○○시 ○○구 ○○로 123',

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Wedding Invitation</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Swiper.js -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== 1. 메인 커버 ===== -->
+  <section id="cover" class="section cover">
+    <div class="cover__overlay"></div>
+    <div class="cover__content">
+      <p class="cover__label">Wedding Invitation</p>
+      <h1 class="cover__names">
+        <span class="cover__groom">신랑이름</span>
+        <span class="cover__ampersand">&amp;</span>
+        <span class="cover__bride">신부이름</span>
+      </h1>
+      <p class="cover__date">2026. 00. 00 토요일 오후 0시</p>
+      <p class="cover__venue">○○웨딩홀</p>
+    </div>
+    <div class="cover__scroll-hint">
+      <span>아래로 스크롤</span>
+      <div class="cover__arrow"></div>
+    </div>
+  </section>
+
+  <!-- ===== 2. 인사말 ===== -->
+  <section id="greeting" class="section greeting">
+    <div class="section__inner">
+      <h2 class="section__title">초대합니다</h2>
+      <div class="greeting__divider"></div>
+      <p class="greeting__text">
+        서로 다른 두 사람이 만나<br>
+        같은 곳을 바라보며<br>
+        함께 걸어가고자 합니다.<br><br>
+        소중한 분들을 모시고<br>
+        사랑의 약속을 하려 합니다.<br>
+        축복해 주시면 감사하겠습니다.
+      </p>
+      <div class="greeting__names">
+        <p><span class="greeting__parent">○○○ · ○○○</span>의 아들 <strong>신랑이름</strong></p>
+        <p><span class="greeting__parent">○○○ · ○○○</span>의 딸 <strong>신부이름</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3. 갤러리 ===== -->
+  <section id="gallery" class="section gallery">
+    <div class="section__inner">
+      <h2 class="section__title">갤러리</h2>
+
+      <!-- 메인 뷰어 -->
+      <div class="swiper gallery__viewer" id="galleryViewer">
+        <div class="swiper-wrapper">
+          <!-- JS에서 동적 생성 -->
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+
+      <!-- 썸네일 그리드 -->
+      <div class="gallery__grid" id="galleryGrid">
+        <!-- JS에서 동적 생성 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. 캘린더 ===== -->
+  <section id="calendar" class="section calendar">
+    <div class="section__inner">
+      <h2 class="section__title">예식 일시</h2>
+      <p class="calendar__datetime">2026년 O월 O일 토요일 오후 O시</p>
+      <div class="calendar__grid" id="calendarGrid">
+        <!-- JS에서 동적 생성 -->
+      </div>
+      <div class="calendar__dday" id="dday"></div>
+    </div>
+  </section>
+
+  <!-- ===== 5. 오시는 길 ===== -->
+  <section id="location" class="section location">
+    <div class="section__inner">
+      <h2 class="section__title">오시는 길</h2>
+      <p class="location__venue-name">○○웨딩홀</p>
+      <p class="location__address" id="venueAddress">○○시 ○○구 ○○로 123</p>
+
+      <div class="location__map" id="map"></div>
+
+      <button class="location__copy-btn" id="copyAddressBtn">
+        주소 복사
+      </button>
+
+      <div class="location__nav-buttons">
+        <a class="location__nav-btn location__nav-btn--kakao" id="naviKakao" href="#" target="_blank" rel="noopener">
+          <span class="location__nav-icon">🟡</span>
+          카카오맵
+        </a>
+        <a class="location__nav-btn location__nav-btn--naver" id="naviNaver" href="#" target="_blank" rel="noopener">
+          <span class="location__nav-icon">🟢</span>
+          네이버지도
+        </a>
+        <a class="location__nav-btn location__nav-btn--tmap" id="naviTmap" href="#" target="_blank" rel="noopener">
+          <span class="location__nav-icon">🔵</span>
+          티맵
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 6. 방명록 ===== -->
+  <section id="guestbook" class="section guestbook">
+    <div class="section__inner">
+      <h2 class="section__title">방명록</h2>
+      <form class="guestbook__form" id="guestbookForm">
+        <div class="guestbook__row">
+          <input type="text" id="gbName" placeholder="이름" maxlength="10" required>
+          <input type="password" id="gbPassword" placeholder="비밀번호" maxlength="10" required>
+        </div>
+        <textarea id="gbMessage" placeholder="축하 메시지를 남겨주세요" maxlength="200" required></textarea>
+        <button type="submit" class="guestbook__submit">등록</button>
+      </form>
+      <ul class="guestbook__list" id="guestbookList">
+        <!-- JS에서 동적 생성 -->
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== 7. 마음 전하기 ===== -->
+  <section id="account" class="section account">
+    <div class="section__inner">
+      <h2 class="section__title">마음 전하기</h2>
+      <p class="account__subtitle">축하의 마음을 전해주세요</p>
+
+      <div class="account__group">
+        <button class="account__toggle" data-target="groomAccounts">
+          신랑측 계좌번호 <span class="account__arrow">▼</span>
+        </button>
+        <div class="account__details" id="groomAccounts">
+          <div class="account__item">
+            <span class="account__info">○○은행 000-000-000000 (신랑이름)</span>
+            <button class="account__copy" data-account="000-000-000000">복사</button>
+          </div>
+          <div class="account__item">
+            <span class="account__info">○○은행 000-000-000000 (아버지성함)</span>
+            <button class="account__copy" data-account="000-000-000000">복사</button>
+          </div>
+          <div class="account__item">
+            <span class="account__info">○○은행 000-000-000000 (어머니성함)</span>
+            <button class="account__copy" data-account="000-000-000000">복사</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="account__group">
+        <button class="account__toggle" data-target="brideAccounts">
+          신부측 계좌번호 <span class="account__arrow">▼</span>
+        </button>
+        <div class="account__details" id="brideAccounts">
+          <div class="account__item">
+            <span class="account__info">○○은행 000-000-000000 (신부이름)</span>
+            <button class="account__copy" data-account="000-000-000000">복사</button>
+          </div>
+          <div class="account__item">
+            <span class="account__info">○○은행 000-000-000000 (아버지성함)</span>
+            <button class="account__copy" data-account="000-000-000000">복사</button>
+          </div>
+          <div class="account__item">
+            <span class="account__info">○○은행 000-000-000000 (어머니성함)</span>
+            <button class="account__copy" data-account="000-000-000000">복사</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 푸터 ===== -->
+  <footer class="footer">
+    <p>Thank you for celebrating with us</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="js/config.js"></script>
+  <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=f8bba6bb7016e10cec2ab6108eda3f94"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/location.js"></script>
+  <script src="js/guestbook.js"></script>
+  <script src="js/account.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

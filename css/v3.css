@@ -1,0 +1,794 @@
+/* ============================================================
+   v3.css — Atelier Blanc
+   Aesthetic: Luxury Editorial Monochrome
+   Fonts: Cormorant Garamond (display) · DM Sans (UI) · Noto Sans KR
+   ============================================================ */
+
+/* === Design Tokens ============================================ */
+:root {
+  /* Monochrome palette — no warm tones */
+  --c-black:    #0A0A0A;
+  --c-ink:      #1A1A1A;
+  --c-gray-700: #2E2E2E;
+  --c-gray-600: #4A4A4A;
+  --c-gray-500: #707070;
+  --c-gray-400: #9A9A9A;
+  --c-gray-300: #C8C8C8;
+  --c-gray-200: #E2E2E2;
+  --c-gray-100: #F2F2F2;
+  --c-gray-50:  #F8F8F8;
+  --c-white:    #FEFEFE;
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', 'Noto Serif KR', Georgia, serif;
+  --font-ui:      'DM Sans', 'Noto Sans KR', system-ui, sans-serif;
+
+  /* Spacing (4px base) */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-8:  32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+
+  /* Easing */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* === Reset ==================================================== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-ui);
+  color: var(--c-black);
+  background-color: var(--c-white);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img   { max-width: 100%; display: block; }
+button { cursor: pointer; font-family: inherit; }
+a     { text-decoration: none; color: inherit; }
+
+/* === Section Common =========================================== */
+.section { padding: var(--sp-20) var(--sp-6); }
+
+.section__inner {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Small all-caps DM Sans label — editorial chapter heading */
+.section__title {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--c-gray-400);
+  text-align: center;
+  margin-bottom: var(--sp-3);
+}
+
+/* Thin rule under section label */
+.section__rule {
+  width: 28px;
+  height: 1px;
+  background: var(--c-gray-300);
+  margin: 0 auto var(--sp-10);
+}
+
+/* === 1. Cover ================================================= */
+.cover {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--c-black); /* solid black until photo injects */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 0;
+  overflow: hidden;
+}
+
+.cover__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    170deg,
+    rgba(0, 0, 0, 0.50) 0%,
+    rgba(0, 0, 0, 0.30) 45%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
+  z-index: 1;
+}
+
+.cover__content {
+  position: relative;
+  z-index: 2;
+  color: var(--c-white);
+  padding: 0 var(--sp-8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cover__label {
+  font-family: var(--font-ui);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: rgba(254, 254, 254, 0.5);
+  margin-bottom: var(--sp-8);
+}
+
+/* Large italic Cormorant — the magazine-cover moment */
+.cover__names {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 12vw, 56px);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  color: var(--c-white);
+  margin-bottom: var(--sp-8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  flex-wrap: nowrap;
+}
+
+.cover__ampersand {
+  font-size: 0.62em;
+  font-style: normal;
+  font-weight: 300;
+  opacity: 0.55;
+  display: inline-block;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.cover__rule {
+  width: 40px;
+  height: 1px;
+  background: rgba(254, 254, 254, 0.35);
+  margin-bottom: var(--sp-6);
+}
+
+.cover__date {
+  font-family: var(--font-ui);
+  font-size: 9.5px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(254, 254, 254, 0.72);
+  margin-bottom: var(--sp-2);
+}
+
+.cover__venue {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: rgba(254, 254, 254, 0.58);
+}
+
+.cover__scroll-hint {
+  position: absolute;
+  bottom: var(--sp-8);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: rgba(254, 254, 254, 0.38);
+  font-family: var(--font-ui);
+  font-size: 7.5px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.cover__arrow {
+  width: 13px;
+  height: 13px;
+  border-right: 1px solid rgba(254, 254, 254, 0.38);
+  border-bottom: 1px solid rgba(254, 254, 254, 0.38);
+  transform: rotate(45deg);
+  animation: cover-bounce 2.6s ease-in-out infinite;
+}
+
+@keyframes cover-bounce {
+  0%, 100% { transform: rotate(45deg) translateY(0);   opacity: 0.38; }
+  50%       { transform: rotate(45deg) translateY(5px); opacity: 0.75; }
+}
+
+/* === 2. Greeting ============================================== */
+.greeting {
+  background: var(--c-white);
+  text-align: center;
+}
+
+.greeting__text {
+  font-family: var(--font-display);
+  font-size: 16.5px;
+  font-weight: 300;
+  line-height: 2.1;
+  color: var(--c-gray-600);
+  margin-bottom: var(--sp-12);
+  letter-spacing: 0.025em;
+}
+
+.greeting__names {
+  font-family: var(--font-ui);
+  font-size: 11.5px;
+  color: var(--c-gray-500);
+  line-height: 2.4;
+  letter-spacing: 0.02em;
+}
+
+.greeting__names strong {
+  color: var(--c-ink);
+  font-weight: 500;
+}
+
+.greeting__parent {
+  font-size: 11px;
+  color: var(--c-gray-400);
+}
+
+/* === 3. Gallery =============================================== */
+.gallery {
+  background: var(--c-gray-100);
+  padding-bottom: var(--sp-20);
+}
+
+.gallery__viewer {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  margin-bottom: 3px; /* tight gap between viewer and grid */
+
+  /* Override Swiper navigation color */
+  --swiper-navigation-color: #FEFEFE;
+  --swiper-navigation-size: 17px;
+}
+
+.gallery__viewer .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Square monochrome navigation buttons */
+.gallery__viewer .swiper-button-prev,
+.gallery__viewer .swiper-button-next {
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  background: rgba(10, 10, 10, 0.3);
+  transition: background 0.2s;
+}
+
+.gallery__viewer .swiper-button-prev { left: 0; }
+.gallery__viewer .swiper-button-next { right: 0; }
+
+.gallery__viewer .swiper-button-prev:hover,
+.gallery__viewer .swiper-button-next:hover {
+  background: rgba(10, 10, 10, 0.65);
+}
+
+/* Thumbnail grid — gap color shows through */
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  background: var(--c-gray-300);
+}
+
+.gallery__grid-item {
+  aspect-ratio: 1;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: opacity 0.2s;
+}
+
+.gallery__grid-item.active {
+  border-color: var(--c-black);
+}
+
+.gallery__grid-item:not(.active) {
+  opacity: 0.55;
+}
+
+.gallery__grid-item:not(.active):hover {
+  opacity: 1;
+}
+
+.gallery__grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* === 4. Calendar ============================================== */
+.calendar {
+  background: var(--c-white);
+  text-align: center;
+}
+
+.calendar__datetime {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--c-gray-600);
+  margin-bottom: var(--sp-8);
+  letter-spacing: 0.03em;
+}
+
+.calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  max-width: 296px;
+  margin: 0 auto var(--sp-6);
+}
+
+.calendar__dow {
+  font-family: var(--font-ui);
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-gray-400);
+  padding: var(--sp-2) 0;
+  text-align: center;
+}
+
+.calendar__day {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 300;
+  padding: var(--sp-2) 0;
+  text-align: center;
+  color: var(--c-gray-700);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.calendar__day--empty    { visibility: hidden; }
+.calendar__day--sunday   { color: var(--c-gray-400); }
+.calendar__day--saturday { color: var(--c-gray-400); }
+
+/* Wedding day — stark filled circle */
+.calendar__day--wedding {
+  background: var(--c-black);
+  color: var(--c-white);
+  font-weight: 500;
+}
+
+.calendar__dday {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-gray-500);
+}
+
+/* === 5. Location ============================================== */
+.location {
+  background: var(--c-gray-100);
+}
+
+.location .section__inner { text-align: center; }
+
+.location__venue-name {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--c-ink);
+  margin-bottom: var(--sp-1);
+}
+
+.location__address {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  color: var(--c-gray-400);
+  letter-spacing: 0.04em;
+  margin-bottom: var(--sp-5);
+}
+
+.location__map {
+  width: 100%;
+  height: 240px;
+  background: var(--c-gray-200);
+  margin-bottom: var(--sp-4);
+  overflow: hidden;
+}
+
+/* Square outline button — Vercel precision style */
+.location__copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 9px var(--sp-6);
+  font-family: var(--font-ui);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-black);
+  background: transparent;
+  border: 1px solid var(--c-black);
+  margin-bottom: var(--sp-6);
+  transition: background 0.18s, color 0.18s;
+}
+
+.location__copy-btn:hover {
+  background: var(--c-black);
+  color: var(--c-white);
+}
+
+.location__nav-buttons {
+  display: flex;
+  gap: var(--sp-3);
+  justify-content: center;
+}
+
+.location__nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-4) var(--sp-5);
+  font-family: var(--font-ui);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-gray-600);
+  background: var(--c-white);
+  border: 1px solid var(--c-gray-200);
+  flex: 1;
+  max-width: 105px;
+  transition: border-color 0.18s, color 0.18s;
+}
+
+.location__nav-btn:hover {
+  border-color: var(--c-black);
+  color: var(--c-black);
+}
+
+.location__nav-icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+/* === 6. Guestbook ============================================= */
+.guestbook {
+  background: var(--c-white);
+}
+
+.guestbook__form {
+  margin-bottom: var(--sp-10);
+}
+
+.guestbook__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-2);
+}
+
+.guestbook__row input {
+  padding: var(--sp-3) var(--sp-4);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--c-black);
+  border: 1px solid var(--c-gray-200);
+  background: var(--c-gray-50);
+  outline: none;
+  transition: border-color 0.18s, background 0.18s;
+  -webkit-appearance: none;
+}
+
+.guestbook__row input::placeholder { color: var(--c-gray-400); }
+
+.guestbook__row input:focus {
+  border-color: var(--c-black);
+  background: var(--c-white);
+}
+
+.guestbook__form textarea {
+  width: 100%;
+  height: 80px;
+  padding: var(--sp-3) var(--sp-4);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  color: var(--c-black);
+  border: 1px solid var(--c-gray-200);
+  background: var(--c-gray-50);
+  resize: none;
+  outline: none;
+  margin-bottom: var(--sp-2);
+  display: block;
+  transition: border-color 0.18s, background 0.18s;
+  -webkit-appearance: none;
+}
+
+.guestbook__form textarea::placeholder { color: var(--c-gray-400); }
+
+.guestbook__form textarea:focus {
+  border-color: var(--c-black);
+  background: var(--c-white);
+}
+
+/* Filled black submit button */
+.guestbook__submit {
+  width: 100%;
+  padding: var(--sp-4);
+  font-family: var(--font-ui);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--c-white);
+  background: var(--c-black);
+  border: 1px solid var(--c-black);
+  transition: background 0.18s;
+}
+
+.guestbook__submit:hover {
+  background: var(--c-gray-700);
+  border-color: var(--c-gray-700);
+}
+
+/* JS-generated guestbook list items */
+.guestbook__list { list-style: none; }
+
+.guestbook__item {
+  padding: var(--sp-5) 0;
+  border-bottom: 1px solid var(--c-gray-200);
+}
+
+.guestbook__item:first-child {
+  border-top: 1px solid var(--c-gray-200);
+}
+
+.guestbook__item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--sp-2);
+}
+
+.guestbook__item-name {
+  font-family: var(--font-ui);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--c-ink);
+}
+
+.guestbook__item-date {
+  font-family: var(--font-ui);
+  font-size: 9.5px;
+  color: var(--c-gray-400);
+}
+
+.guestbook__item-message {
+  font-family: var(--font-display);
+  font-size: 14.5px;
+  font-weight: 300;
+  color: var(--c-gray-600);
+  line-height: 1.75;
+}
+
+.guestbook__item-delete {
+  font-family: var(--font-ui);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--c-gray-300);
+  background: none;
+  border: none;
+  padding: var(--sp-1) 0;
+  margin-top: var(--sp-2);
+  display: block;
+  transition: color 0.18s;
+}
+
+.guestbook__item-delete:hover { color: var(--c-gray-600); }
+
+/* === 7. Account =============================================== */
+.account {
+  background: var(--c-gray-100);
+  text-align: center;
+}
+
+.account__subtitle {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  color: var(--c-gray-400);
+  letter-spacing: 0.08em;
+  margin-bottom: var(--sp-8);
+}
+
+.account__group {
+  margin-bottom: var(--sp-3);
+  text-align: left;
+}
+
+.account__toggle {
+  width: 100%;
+  padding: var(--sp-4) var(--sp-5);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-gray-600);
+  background: var(--c-white);
+  border: 1px solid var(--c-gray-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.18s, color 0.18s;
+}
+
+.account__toggle:hover {
+  background: var(--c-gray-50);
+  color: var(--c-black);
+}
+
+.account__arrow {
+  font-size: 9px;
+  color: var(--c-gray-400);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.account__toggle.open .account__arrow {
+  transform: rotate(180deg);
+}
+
+.account__details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s var(--ease-out);
+}
+
+.account__details.open { max-height: 400px; }
+
+/* JS-generated account items */
+.account__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--sp-4) var(--sp-5);
+  border-bottom: 1px solid var(--c-gray-100);
+  border-left: 1px solid var(--c-gray-200);
+  border-right: 1px solid var(--c-gray-200);
+  background: var(--c-white);
+}
+
+.account__item:last-child {
+  border-bottom: 1px solid var(--c-gray-200);
+}
+
+.account__info {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  color: var(--c-gray-600);
+  text-align: left;
+  line-height: 1.5;
+}
+
+.account__copy {
+  padding: var(--sp-1) var(--sp-3);
+  font-family: var(--font-ui);
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--c-gray-500);
+  background: none;
+  border: 1px solid var(--c-gray-300);
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: var(--sp-3);
+  transition: color 0.18s, background 0.18s, border-color 0.18s;
+}
+
+.account__copy:hover {
+  color: var(--c-white);
+  background: var(--c-black);
+  border-color: var(--c-black);
+}
+
+/* === Footer =================================================== */
+/* Black footer — mirrors the cover, bookends the page */
+.footer {
+  background: var(--c-black);
+  padding: var(--sp-12) var(--sp-6);
+  text-align: center;
+}
+
+.footer p {
+  font-family: var(--font-ui);
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(254, 254, 254, 0.3);
+}
+
+/* === Toast ==================================================== */
+.toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(14px);
+  padding: var(--sp-3) var(--sp-6);
+  background: var(--c-black);
+  color: var(--c-white);
+  font-family: var(--font-ui);
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transition: opacity 0.22s, transform 0.22s var(--ease-out);
+  z-index: 100;
+  pointer-events: none;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* === Scroll Animations ======================================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

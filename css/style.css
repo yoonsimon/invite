@@ -402,7 +402,9 @@ a {
 }
 
 .location__nav-icon {
-  font-size: 1.4rem;
+  width: 28px;
+  height: 28px;
+  display: block;
 }
 
 /* ===== 6. Guestbook ===== */

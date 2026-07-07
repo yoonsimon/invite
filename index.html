@@ -114,15 +114,31 @@
 
       <div class="location__nav-buttons">
         <a class="location__nav-btn location__nav-btn--kakao" id="naviKakao" href="#" target="_blank" rel="noopener">
-          <span class="location__nav-icon">🟡</span>
+          <svg class="location__nav-icon" viewBox="0 0 28 28" aria-hidden="true">
+            <rect width="28" height="28" rx="7" fill="#FEE500"/>
+            <path d="M14 7.5c-2.4 0-4.3 1.9-4.3 4.3 0 3.2 4.3 8.2 4.3 8.2s4.3-5 4.3-8.2c0-2.4-1.9-4.3-4.3-4.3z" fill="#3A1D1D"/>
+            <circle cx="14" cy="11.8" r="1.6" fill="#FEE500"/>
+          </svg>
           카카오맵
         </a>
         <a class="location__nav-btn location__nav-btn--naver" id="naviNaver" href="#" target="_blank" rel="noopener">
-          <span class="location__nav-icon">🟢</span>
+          <svg class="location__nav-icon" viewBox="0 0 28 28" aria-hidden="true">
+            <rect width="28" height="28" rx="7" fill="#03C75A"/>
+            <path d="M10 19V9l8 10V9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
           네이버지도
         </a>
         <a class="location__nav-btn location__nav-btn--tmap" id="naviTmap" href="#" target="_blank" rel="noopener">
-          <span class="location__nav-icon">🔵</span>
+          <svg class="location__nav-icon" viewBox="0 0 28 28" aria-hidden="true">
+            <defs>
+              <linearGradient id="tmapG" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#EC1E77"/>
+                <stop offset="1" stop-color="#5B34EF"/>
+              </linearGradient>
+            </defs>
+            <rect width="28" height="28" rx="7" fill="#fff" stroke="#ececec"/>
+            <path d="M8.5 10h11M14 10v9" fill="none" stroke="url(#tmapG)" stroke-width="2.6" stroke-linecap="round"/>
+          </svg>
           티맵
         </a>
       </div>

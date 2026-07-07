@@ -275,6 +275,8 @@ a {
   color: #4a4a4a;
   margin-bottom: 28px;
   text-align: center;
+  word-break: keep-all;
+  text-wrap: pretty;
 }
 
 .greeting__names {

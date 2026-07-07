@@ -172,6 +172,8 @@ a {
   line-height: 2;
   color: #5a5a5a;
   margin-bottom: 40px;
+  word-break: keep-all;
+  text-wrap: pretty;
 }
 
 .greeting__names {

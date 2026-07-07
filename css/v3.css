@@ -20,8 +20,8 @@
   --c-white:    #FEFEFE;
 
   /* Typography */
-  --font-display: 'Cormorant Garamond', 'Noto Serif KR', Georgia, serif;
-  --font-ui:      'DM Sans', 'Noto Sans KR', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'IBM Plex Sans KR', system-ui, sans-serif;
+  --font-ui:      'IBM Plex Sans KR', 'Space Grotesk', system-ui, sans-serif;
 
   /* Spacing (4px base) */
   --sp-1:  4px;

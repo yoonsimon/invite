@@ -10,7 +10,8 @@ function initGuestbook() {
 
   // Firebase 초기화
   if (CONFIG.firebase.apiKey) {
-    loadFirebase().then(() => {
+    ensureFirebase().then((database) => {
+      db = database;
       loadMessages();
     });
   } else {
@@ -55,14 +56,7 @@ function initGuestbook() {
   });
 }
 
-async function loadFirebase() {
-  // Firebase SDK 로드
-  await loadScript('https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js');
-  await loadScript('https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js');
-
-  const app = firebase.initializeApp(CONFIG.firebase);
-  db = firebase.firestore();
-}
+// Firebase 초기화는 firebase-init.js의 ensureFirebase()로 일원화됨.
 
 function loadMessages() {
   const list = document.getElementById('guestbookList');
@@ -157,12 +151,4 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
-function loadScript(src) {
-  return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = src;
-    script.onload = resolve;
-    script.onerror = reject;
-    document.head.appendChild(script);
-  });
-}
+// loadScript는 firebase-init.js의 loadScriptOnce로 대체됨.

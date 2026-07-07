@@ -72,15 +72,15 @@ function setupNavLinks(lat, lng, venue) {
     kakaoLink.href = `https://map.kakao.com/link/to/${encodedVenue},${lat},${lng}`;
   }
 
-  // 네이버지도
+  // 네이버지도 (Naver 공식 앱 스킴 — 모바일에서 네이버지도 앱 길찾기 실행)
   const naverLink = document.getElementById('naviNaver');
   if (naverLink) {
-    naverLink.href = `https://map.naver.com/v5/directions/-/-/-/transit?c=${lng},${lat},15,0,0,0,dh&destination=${encodedVenue},${lng},${lat}`;
+    naverLink.href = `nmap://route/public?dlat=${lat}&dlng=${lng}&dname=${encodedVenue}&appname=yoonsimon.github.io`;
   }
 
-  // 티맵
+  // 티맵 (T map 앱 스킴 — 모바일에서 티맵 길찾기 실행)
   const tmapLink = document.getElementById('naviTmap');
   if (tmapLink) {
-    tmapLink.href = `https://apis.openapi.sk.com/tmap/app/routes?appKey=&name=${encodedVenue}&lon=${lng}&lat=${lat}`;
+    tmapLink.href = `tmap://route?goalname=${encodedVenue}&goalx=${lng}&goaly=${lat}`;
   }
 }

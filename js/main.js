@@ -24,6 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initGuestbook();
   initAccount();
 
+  // 민감정보(이름·부모님·계좌) Firestore에서 로드 후 적용
+  loadPrivateData().catch((err) => console.error('민감정보 로드 실패:', err));
+
   // 스크롤 애니메이션
   initScrollAnimation();
 
@@ -32,31 +35,24 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function applyConfig() {
-  // 커버 이름
-  const groomEl = document.querySelector('.cover__groom');
-  const brideEl = document.querySelector('.cover__bride');
-  if (groomEl) groomEl.textContent = CONFIG.groom.name;
-  if (brideEl) brideEl.textContent = CONFIG.bride.name;
-
-  // 커버 날짜/장소
+  // 커버 날짜/장소 (공개 정보)
   const dateEl = document.querySelector('.cover__date');
   const venueEl = document.querySelector('.cover__venue');
   if (dateEl) dateEl.textContent = CONFIG.wedding.displayDate;
   if (venueEl) venueEl.textContent = CONFIG.wedding.venue + ' ' + (CONFIG.wedding.hall || '');
 
-  // 인사말 부모님 이름
-  const nameEls = document.querySelectorAll('.greeting__names p');
-  if (nameEls.length >= 2) {
-    nameEls[0].innerHTML = `<span class="greeting__parent">${CONFIG.groom.father} · ${CONFIG.groom.mother}</span>의 아들 <strong>${CONFIG.groom.name}</strong>`;
-    nameEls[1].innerHTML = `<span class="greeting__parent">${CONFIG.bride.father} · ${CONFIG.bride.mother}</span>의 딸 <strong>${CONFIG.bride.name}</strong>`;
-  }
-
-  // 장소 이름
+  // 장소 이름 (공개 정보)
   const venueName = document.querySelector('.location__venue-name');
   if (venueName) venueName.textContent = CONFIG.wedding.venue + ' ' + (CONFIG.wedding.hall || '');
 
-  // 페이지 타이틀
-  document.title = `${CONFIG.groom.name} ♥ ${CONFIG.bride.name} 결혼합니다`;
+  // 이름·혼주는 민감정보 → Firestore 로드 후 secret.js가 채운다.
+  // 로드 전 플레이스홀더가 노출되지 않도록 비워둔다.
+  const groomEl = document.querySelector('.cover__groom');
+  const brideEl = document.querySelector('.cover__bride');
+  if (groomEl) groomEl.textContent = '';
+  if (brideEl) brideEl.textContent = '';
+  const nameEls = document.querySelectorAll('.greeting__names p');
+  nameEls.forEach((el) => (el.innerHTML = ''));
 }
 
 // 스크롤 시 fade-in 애니메이션

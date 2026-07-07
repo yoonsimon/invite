@@ -1,0 +1,6 @@
+# 로컬 전용 시딩 도구·비밀 데이터 (공개 repo에 절대 커밋 금지)
+seed.html
+private-data*.json
+*.secret.json
+firestore.rules
+.firebase/

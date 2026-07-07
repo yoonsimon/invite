@@ -4,27 +4,22 @@
  */
 const CONFIG = {
   // ===== 신랑 & 신부 정보 =====
-  groom: {
-    name: '신랑이름',
-    father: '아버지성함',
-    mother: '어머니성함',
-  },
-  bride: {
-    name: '신부이름',
-    father: '아버지성함',
-    mother: '어머니성함',
-  },
+  // ⚠️ 실제 이름·부모님 성함은 여기 두지 말 것 (공개 repo 유출).
+  //    민감정보는 Firestore `invite/private` 에서 런타임 로드된다 (secret.js).
+  //    아래는 로드 전 폴백용 빈 값.
+  groom: { name: '', father: '', mother: '' },
+  bride: { name: '', father: '', mother: '' },
 
   // ===== 예식 정보 =====
   wedding: {
-    date: '2027-05-15',        // YYYY-MM-DD
-    time: '14:00',             // HH:mm (24시간)
-    displayDate: '2027년 5월 15일 토요일 오후 2시',
-    venue: '○○웨딩홀',
-    hall: '○층 ○○홀',
-    address: '○○시 ○○구 ○○로 123',
-    lat: 37.5665,              // 위도
-    lng: 126.9780,             // 경도
+    date: '2027-04-18',        // YYYY-MM-DD
+    time: '11:00',             // HH:mm (24시간)
+    displayDate: '2027년 4월 18일 일요일 오전 11시',
+    venue: '규수당 문래점',
+    hall: '2층',
+    address: '서울 영등포구 문래로 164 SK리더스뷰 2층',
+    lat: 37.5178,              // 위도
+    lng: 126.9001,             // 경도
   },
 
   // ===== 인사말 =====
@@ -51,18 +46,8 @@ const CONFIG = {
   coverImage: 'images/sample-1.jpg',
 
   // ===== 계좌 정보 =====
-  accounts: {
-    groom: [
-      { bank: '○○은행', number: '000-000-000000', holder: '신랑이름' },
-      { bank: '○○은행', number: '000-000-000000', holder: '아버지성함' },
-      { bank: '○○은행', number: '000-000-000000', holder: '어머니성함' },
-    ],
-    bride: [
-      { bank: '○○은행', number: '000-000-000000', holder: '신부이름' },
-      { bank: '○○은행', number: '000-000-000000', holder: '아버지성함' },
-      { bank: '○○은행', number: '000-000-000000', holder: '어머니성함' },
-    ],
-  },
+  // ⚠️ 실제 계좌번호는 여기 두지 말 것. Firestore `invite/private` 에서 런타임 로드.
+  accounts: { groom: [], bride: [] },
 
   // ===== Firebase 설정 =====
   firebase: {

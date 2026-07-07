@@ -1,0 +1,851 @@
+/* ============================================================
+   final.css — Post-feed layout · Monochrome
+   Structure: v2 Instagram-feed  ·  Skin: v3 B&W
+   Fonts: Space Grotesk (display) · IBM Plex Sans KR (UI)
+   ============================================================ */
+
+/* ----- Design tokens ----- */
+:root {
+  --c-bg:           #F8F8F8;
+  --c-surface:      #FFFFFF;
+  --c-border:       #E2E2E2;
+  --c-border-inner: #F2F2F2;
+  --c-text:         #1A1A1A;
+  --c-text-muted:   #9A9A9A;
+  --c-accent:       #0A0A0A;     /* pure black replaces rose */
+  --c-accent-pale:  #F2F2F2;    /* light gray replaces pale rose */
+  --c-sun:          #9A9A9A;    /* calendar Sunday  — neutral gray */
+  --c-sat:          #9A9A9A;    /* calendar Saturday — neutral gray */
+
+  --font-sans:    'IBM Plex Sans KR', 'Space Grotesk', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'IBM Plex Sans KR', system-ui, sans-serif;
+
+  --radius-card: 12px;
+  --radius-sm:   6px;
+
+  --card-mx:  12px;
+  --card-gap: 10px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ----- Reset ----- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--c-text);
+  background: var(--c-bg);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================================================
+   Section base — sections are vertical stacking containers
+   ============================================================ */
+.section {
+  padding: 0;
+}
+
+/* section__title gets fade-in from main.js; visible label via .post-card__username */
+.section__title {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* section__inner is the JS scroll-animation anchor */
+.section__inner {
+  /* no padding here — applied through .post-card__body */
+}
+
+.section + .section {
+  margin-top: var(--card-gap);
+}
+
+/* ============================================================
+   1. Cover
+   ============================================================ */
+.cover {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 0 72px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #111;
+  overflow: hidden;
+}
+
+.cover__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0.18) 40%,
+    rgba(0, 0, 0, 0.68) 100%
+  );
+  z-index: 1;
+}
+
+/* "Wedding Invitation" eyebrow — top center */
+.cover__eyebrow {
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.cover__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  padding: 0 24px;
+}
+
+.cover__names {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+
+.cover__groom,
+.cover__bride {
+  display: inline;
+}
+
+.cover__ampersand {
+  display: inline-block;
+  margin: 0 10px;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 300;
+  opacity: 0.5;
+  vertical-align: middle;
+}
+
+.cover__meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.76rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  opacity: 0.82;
+}
+
+.cover__meta-dot {
+  opacity: 0.45;
+}
+
+.cover__scroll-hint {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.cover__arrow {
+  width: 13px;
+  height: 13px;
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transform: rotate(45deg);
+  animation: final-bounce 2.4s ease-in-out infinite;
+}
+
+@keyframes final-bounce {
+  0%, 100% { transform: rotate(45deg) translateY(0);   opacity: 0.5; }
+  50%       { transform: rotate(45deg) translateY(6px); opacity: 1;   }
+}
+
+/* ============================================================
+   Post Card System
+   ============================================================ */
+.post-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-card);
+  margin: var(--card-gap) var(--card-mx) 0;
+  overflow: hidden;
+  animation: card-enter 0.45s ease both;
+}
+
+@keyframes card-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* First card after cover: extra top margin */
+.section:first-of-type + .section .post-card {
+  margin-top: 16px;
+}
+
+/* Post card header — Instagram post header style */
+.post-card__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--c-border-inner);
+}
+
+/* Ring avatar — inline SVG (two interlocked rings) */
+.post-card__avatar {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--c-accent-pale);
+  border-radius: 50%;
+  outline: 1.5px solid var(--c-border);
+  outline-offset: 2px;
+}
+
+.post-card__avatar svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+/* Section title displayed as the "username" */
+.post-card__username {
+  font-family: var(--font-display);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--c-text);
+  letter-spacing: 0.03em;
+}
+
+.post-card__body {
+  padding: 20px 20px 24px;
+}
+
+/* Gallery body — no horizontal padding (grid goes edge-to-edge) */
+.post-card__body--gallery {
+  padding: 0;
+}
+
+/* Card entrance animation stagger */
+.section:nth-child(2) .post-card { animation-delay: 0.05s; }
+.section:nth-child(3) .post-card { animation-delay: 0.10s; }
+.section:nth-child(4) .post-card { animation-delay: 0.15s; }
+.section:nth-child(5) .post-card { animation-delay: 0.20s; }
+.section:nth-child(6) .post-card { animation-delay: 0.25s; }
+.section:nth-child(7) .post-card { animation-delay: 0.30s; }
+.section:nth-child(8) .post-card { animation-delay: 0.35s; }
+
+/* ============================================================
+   2. Greeting
+   ============================================================ */
+.greeting__text {
+  font-size: 0.9rem;
+  line-height: 2;
+  color: #4A4A4A;
+  margin-bottom: 28px;
+  text-align: center;
+  word-break: keep-all;
+  text-wrap: pretty;
+}
+
+.greeting__names {
+  font-size: 0.82rem;
+  color: var(--c-text-muted);
+  line-height: 2.2;
+  text-align: center;
+  border-top: 1px solid var(--c-border-inner);
+  padding-top: 18px;
+  min-height: 64px;  /* reserve space while Firestore loads */
+}
+
+.greeting__names strong {
+  color: var(--c-text);
+  font-weight: 600;
+}
+
+.greeting__parent {
+  font-size: 0.78rem;
+  color: #C0C0C0;
+}
+
+/* ============================================================
+   3. Gallery
+   ============================================================ */
+.gallery__viewer {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #111;
+}
+
+.gallery__viewer .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery__viewer .swiper-button-prev,
+.gallery__viewer .swiper-button-next {
+  color: rgba(255, 255, 255, 0.85);
+  transform: scale(0.58);
+}
+
+.gallery__viewer + .gallery__grid {
+  border-top: 1px solid var(--c-border-inner);
+}
+
+/* 3-col Instagram grid */
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--c-border-inner);
+}
+
+.gallery__grid-item {
+  aspect-ratio: 1;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: opacity 0.18s;
+}
+
+.gallery__grid-item:not(.active) {
+  opacity: 0.7;
+}
+
+.gallery__grid-item:not(.active):hover {
+  opacity: 0.92;
+}
+
+.gallery__grid-item.active::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--c-accent);
+  pointer-events: none;
+}
+
+.gallery__grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ============================================================
+   4. Calendar
+   ============================================================ */
+.calendar .post-card__body {
+  text-align: center;
+}
+
+.calendar__datetime {
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--c-text-muted);
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+}
+
+.calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  max-width: 300px;
+  margin: 0 auto 20px;
+}
+
+.calendar__dow {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--c-text-muted);
+  padding: 6px 0;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.calendar__dow:first-child { color: var(--c-sun); }
+.calendar__dow:last-child  { color: var(--c-sat); }
+
+.calendar__day {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  padding: 6px 0;
+  text-align: center;
+  color: var(--c-text);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 400;
+}
+
+.calendar__day--empty    { visibility: hidden; }
+.calendar__day--sunday   { color: var(--c-sun); }
+.calendar__day--saturday { color: var(--c-sat); }
+
+/* Wedding day — stark black filled circle */
+.calendar__day--wedding {
+  background: var(--c-accent);
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: 50%;
+}
+
+.calendar__dday {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+}
+
+/* ============================================================
+   5. Location
+   ============================================================ */
+.location .post-card__body {
+  text-align: center;
+}
+
+.location__venue-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--c-text);
+  margin-bottom: 4px;
+  letter-spacing: 0.03em;
+}
+
+.location__address {
+  font-size: 0.78rem;
+  color: var(--c-text-muted);
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+}
+
+.location__map {
+  width: 100%;
+  height: 240px;
+  border-radius: var(--radius-sm);
+  background: #E8E4DD;
+  margin-bottom: 14px;
+  overflow: hidden;
+  border: 1px solid var(--c-border-inner);
+}
+
+/* Square-ish outline copy button — precision style */
+.location__copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 22px;
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-text);
+  background: transparent;
+  border: 1px solid var(--c-text);
+  border-radius: 2px;
+  margin-bottom: 18px;
+  transition: background 0.18s var(--ease-out), color 0.18s;
+}
+
+.location__copy-btn:hover {
+  background: var(--c-accent);
+  color: #FFFFFF;
+  border-color: var(--c-accent);
+}
+
+.location__nav-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.location__nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 14px;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius-sm);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  flex: 1;
+  max-width: 100px;
+  color: var(--c-text-muted);
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+}
+
+.location__nav-btn:hover {
+  background: var(--c-accent-pale);
+  border-color: var(--c-text);
+  color: var(--c-text);
+}
+
+.location__nav-icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+/* ============================================================
+   6. Guestbook
+   ============================================================ */
+.guestbook__form {
+  margin-bottom: 24px;
+}
+
+.guestbook__row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.guestbook__row input {
+  flex: 1;
+  padding: 9px 12px;
+  font-size: 0.82rem;
+  font-family: inherit;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  background: var(--c-bg);
+  outline: none;
+  color: var(--c-text);
+  transition: border-color 0.18s;
+  -webkit-appearance: none;
+}
+
+.guestbook__row input::placeholder { color: var(--c-text-muted); }
+
+.guestbook__row input:focus {
+  border-color: var(--c-accent);
+  background: #FFFFFF;
+}
+
+.guestbook__form textarea {
+  width: 100%;
+  height: 76px;
+  padding: 9px 12px;
+  font-size: 0.82rem;
+  font-family: inherit;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  background: var(--c-bg);
+  resize: none;
+  outline: none;
+  margin-bottom: 8px;
+  color: var(--c-text);
+  transition: border-color 0.18s;
+  -webkit-appearance: none;
+}
+
+.guestbook__form textarea::placeholder { color: var(--c-text-muted); }
+
+.guestbook__form textarea:focus {
+  border-color: var(--c-accent);
+  background: #FFFFFF;
+}
+
+.guestbook__submit {
+  width: 100%;
+  padding: 12px;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: var(--c-accent);
+  border: 1px solid var(--c-accent);
+  border-radius: var(--radius-sm);
+  transition: background 0.18s, opacity 0.18s;
+}
+
+.guestbook__submit:hover {
+  background: #2E2E2E;
+  border-color: #2E2E2E;
+}
+
+.guestbook__list {
+  list-style: none;
+}
+
+/* Each entry — styled like an Instagram comment */
+.guestbook__item {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--c-border-inner);
+}
+
+.guestbook__item:last-child {
+  border-bottom: none;
+}
+
+.guestbook__item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.guestbook__item-name {
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--c-text);
+}
+
+.guestbook__item-date {
+  font-size: 0.72rem;
+  color: #C0C0C0;
+}
+
+.guestbook__item-message {
+  font-size: 0.82rem;
+  color: #4A4A4A;
+  line-height: 1.6;
+}
+
+.guestbook__item-delete {
+  font-size: 0.68rem;
+  color: #D0D0D0;
+  background: none;
+  border: none;
+  padding: 2px 0;
+  margin-top: 4px;
+  display: block;
+  transition: color 0.18s;
+}
+
+.guestbook__item-delete:hover {
+  color: var(--c-text-muted);
+}
+
+/* ============================================================
+   7. Account
+   ============================================================ */
+.account .post-card__body {
+  text-align: center;
+}
+
+.account__subtitle {
+  font-size: 0.8rem;
+  color: var(--c-text-muted);
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+}
+
+.account__group {
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.account__toggle {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--c-text);
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.18s, border-color 0.18s;
+}
+
+.account__toggle:hover {
+  background: var(--c-accent-pale);
+  border-color: var(--c-text-muted);
+}
+
+.account__arrow {
+  font-size: 0.65rem;
+  color: var(--c-text-muted);
+  transition: transform 0.28s var(--ease-out);
+}
+
+.account__toggle.open .account__arrow {
+  transform: rotate(180deg);
+}
+
+.account__details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s var(--ease-out);
+  border: 1px solid transparent;
+  border-top: none;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+}
+
+.account__details.open {
+  max-height: 300px;
+  border-color: var(--c-border);
+}
+
+.account__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--c-border-inner);
+  background: #FFFFFF;
+}
+
+.account__item:last-child {
+  border-bottom: none;
+}
+
+.account__info {
+  font-size: 0.78rem;
+  color: #4A4A4A;
+  text-align: left;
+}
+
+.account__copy {
+  padding: 4px 12px;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  background: none;
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  white-space: nowrap;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.account__copy:hover {
+  background: var(--c-accent);
+  color: #FFFFFF;
+  border-color: var(--c-accent);
+}
+
+/* ============================================================
+   Footer — solid black, mirrors the cover
+   ============================================================ */
+.footer {
+  background: var(--c-accent);
+  padding: 40px 24px 52px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.footer p {
+  font-family: var(--font-display);
+  font-size: 0.66rem;
+  font-weight: 400;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.28);
+}
+
+/* ============================================================
+   Toast notification (created by main.js)
+   ============================================================ */
+.toast {
+  position: fixed;
+  bottom: 72px;
+  left: 50%;
+  transform: translateX(-50%) translateY(16px);
+  padding: 9px 22px;
+  background: rgba(26, 26, 26, 0.9);
+  color: #FFFFFF;
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.24s var(--ease-out), transform 0.24s var(--ease-out);
+  z-index: 100;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================================
+   Scroll animation (managed by main.js)
+   ============================================================ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

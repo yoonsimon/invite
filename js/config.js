@@ -34,16 +34,12 @@ const CONFIG = {
   // ===== 갤러리 이미지 =====
   // images/ 폴더에 사진을 넣고 파일명을 아래에 추가하세요
   gallery: [
-    'images/sample-1.jpg',
-    'images/sample-2.jpg',
-    'images/sample-3.jpg',
-    'images/sample-4.jpg',
-    'images/sample-5.jpg',
-    'images/sample-6.jpg',
+    // 갤러리 사진 추가 예정 — 임시로 커버 1장. images/에 넣고 여기 파일명 추가.
+    'images/og-cover.jpg',
   ],
 
   // 메인 커버 이미지 (갤러리 첫 번째 사진 또는 별도 지정)
-  coverImage: 'images/sample-1.jpg',
+  coverImage: 'images/og-cover.jpg',
 
   // ===== 계좌 정보 =====
   // ⚠️ 실제 계좌번호는 여기 두지 말 것. Firestore `invite/private` 에서 런타임 로드.

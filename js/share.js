@@ -1,52 +1,31 @@
 /**
- * 카카오톡 공유 (Kakao JS SDK)
- * - 푸터 버튼(#kakaoShareBtn) + 플로팅 버튼(#kakaoShareFloat) 둘 다 같은 공유 동작.
- * - 플로팅 버튼은 일정(#calendar) 섹션부터 왼쪽 하단에 노출.
- * - SDK 미로드/실패 시 링크 복사로 폴백.
+ * 청첩장 공유 — 휴대폰 기본 공유 시트(navigator.share) + 링크 복사 폴백.
+ * 카카오톡에 링크가 붙으면 페이지 OG 태그로 미리보기 카드가 뜬다 (별도 카카오 앱/심사 불필요).
+ * - 푸터 버튼(#kakaoShareBtn) + 플로팅 버튼(#kakaoShareFloat) 공용.
+ * - 플로팅은 커버에서 스크롤 내리는 순간부터 노출.
  */
 (function () {
   const url = 'https://yoonsimon.github.io/invite/';
-
-  // Kakao 초기화 (JavaScript 키 = config.kakaoMapApiKey)
-  if (typeof Kakao !== 'undefined' && CONFIG.kakaoMapApiKey) {
-    try {
-      if (!Kakao.isInitialized()) Kakao.init(CONFIG.kakaoMapApiKey);
-    } catch (e) {
-      console.error('Kakao init 실패:', e);
-    }
-  }
+  const shareData = {
+    title: '소중한 분들을 초대합니다',
+    text: '2027년 4월 18일 일요일 오전 11시 · 규수당 문래점',
+    url: url,
+  };
 
   function doShare() {
-    const ready =
-      typeof Kakao !== 'undefined' &&
-      typeof Kakao.isInitialized === 'function' &&
-      Kakao.isInitialized();
-
-    if (ready) {
-      try {
-        Kakao.Share.sendDefault({
-          objectType: 'feed',
-          content: {
-            title: '소중한 분들을 초대합니다',
-            description: '2027년 4월 18일 일요일 오전 11시 · 규수당 문래점',
-            imageUrl: 'https://yoonsimon.github.io/invite/images/og-cover.jpg',
-            link: { mobileWebUrl: url, webUrl: url },
-          },
-          buttons: [
-            { title: '청첩장 보기', link: { mobileWebUrl: url, webUrl: url } },
-          ],
-        });
-        return;
-      } catch (e) {
-        console.error('카카오 공유 실패:', e);
-      }
+    if (navigator.share) {
+      navigator.share(shareData).catch(function () {
+        /* 사용자가 취소했거나 실패 — 무시 */
+      });
+      return;
     }
-
     // 폴백: 링크 복사 (copyToClipboard/showToast는 main.js 전역)
     if (typeof copyToClipboard === 'function') {
       copyToClipboard(url, '청첩장 링크가 복사되었습니다');
     } else if (navigator.clipboard) {
-      navigator.clipboard.writeText(url);
+      navigator.clipboard.writeText(url).then(function () {
+        if (typeof showToast === 'function') showToast('청첩장 링크가 복사되었습니다');
+      });
     }
   }
 
@@ -55,7 +34,7 @@
     if (el) el.addEventListener('click', doShare);
   });
 
-  // 플로팅 버튼: 첫 이미지(커버) 영역에서 스크롤을 내리기 시작하면 바로 노출, 최상단이면 숨김
+  // 플로팅 버튼: 첫 이미지(커버)에서 스크롤을 내리기 시작하면 노출, 최상단이면 숨김
   const float = document.getElementById('kakaoShareFloat');
   if (float) {
     let ticking = false;

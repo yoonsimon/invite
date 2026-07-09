@@ -64,5 +64,5 @@ const CONFIG = {
   },
 
   // ===== 카카오맵 API 키 =====
-  kakaoMapApiKey: '71e4201e7debe411fbafc4ce96788b31',
+  kakaoMapApiKey: 'f8bba6bb7016e10cec2ab6108eda3f94',
 };

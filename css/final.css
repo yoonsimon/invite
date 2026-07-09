@@ -811,6 +811,34 @@ a {
   color: rgba(255, 255, 255, 0.28);
 }
 
+/* 카카오톡 공유 버튼 (검은 푸터 위 흰 알약) */
+.share-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin: 0 auto 24px;
+  padding: 11px 20px;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #1A1A1A;
+  cursor: pointer;
+  transition: transform 0.15s var(--ease-out), opacity 0.2s;
+}
+
+.share-btn:hover { opacity: 0.88; }
+.share-btn:active { transform: scale(0.97); }
+
+.share-btn__icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
 /* ============================================================
    Toast notification (created by main.js)
    ============================================================ */

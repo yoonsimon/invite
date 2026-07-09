@@ -34,27 +34,5 @@
     if (el) el.addEventListener('click', doShare);
   });
 
-  // 플로팅 버튼: 커버(#cover)가 일정 부분 밀려나면 노출.
-  // IntersectionObserver 사용 — iOS Safari에서 스크롤 중에도 안정적으로 갱신됨.
-  const float = document.getElementById('kakaoShareFloat');
-  const cover = document.getElementById('cover');
-  if (float && cover && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver(function (entries) {
-      float.classList.toggle('is-visible', entries[0].intersectionRatio < 0.85);
-    }, { threshold: [0, 0.85, 1] });
-    io.observe(cover);
-  } else if (float) {
-    // 폴백: 스크롤 이벤트
-    let ticking = false;
-    function onScroll() {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(function () {
-        float.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.15);
-        ticking = false;
-      });
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  }
+  // 플로팅 버튼은 항상 노출 (CSS 기본 표시). 스크롤 감지 없음 — 사파리 fixed 갱신 이슈 회피.
 })();

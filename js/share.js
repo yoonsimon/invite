@@ -34,9 +34,17 @@
     if (el) el.addEventListener('click', doShare);
   });
 
-  // 플로팅 버튼: 첫 이미지(커버)에서 스크롤을 내리기 시작하면 노출, 최상단이면 숨김
+  // 플로팅 버튼: 커버(#cover)가 일정 부분 밀려나면 노출.
+  // IntersectionObserver 사용 — iOS Safari에서 스크롤 중에도 안정적으로 갱신됨.
   const float = document.getElementById('kakaoShareFloat');
-  if (float) {
+  const cover = document.getElementById('cover');
+  if (float && cover && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(function (entries) {
+      float.classList.toggle('is-visible', entries[0].intersectionRatio < 0.85);
+    }, { threshold: [0, 0.85, 1] });
+    io.observe(cover);
+  } else if (float) {
+    // 폴백: 스크롤 이벤트
     let ticking = false;
     function onScroll() {
       if (ticking) return;
@@ -47,7 +55,6 @@
       });
     }
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
     onScroll();
   }
 })();

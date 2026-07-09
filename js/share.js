@@ -1,11 +1,10 @@
 /**
  * 카카오톡 공유 (Kakao JS SDK)
- * 실패하거나 SDK 미로드 시 링크 복사로 폴백.
+ * - 푸터 버튼(#kakaoShareBtn) + 플로팅 버튼(#kakaoShareFloat) 둘 다 같은 공유 동작.
+ * - 플로팅 버튼은 일정(#calendar) 섹션부터 왼쪽 하단에 노출.
+ * - SDK 미로드/실패 시 링크 복사로 폴백.
  */
 (function () {
-  const btn = document.getElementById('kakaoShareBtn');
-  if (!btn) return;
-
   const url = 'https://yoonsimon.github.io/invite/';
 
   // Kakao 초기화 (JavaScript 키 = config.kakaoMapApiKey)
@@ -17,7 +16,7 @@
     }
   }
 
-  btn.addEventListener('click', function () {
+  function doShare() {
     const ready =
       typeof Kakao !== 'undefined' &&
       typeof Kakao.isInitialized === 'function' &&
@@ -49,5 +48,29 @@
     } else if (navigator.clipboard) {
       navigator.clipboard.writeText(url);
     }
+  }
+
+  ['kakaoShareBtn', 'kakaoShareFloat'].forEach(function (id) {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', doShare);
   });
+
+  // 플로팅 버튼: 일정(#calendar) 섹션에 도달하면 노출, 위로 올리면 숨김
+  const float = document.getElementById('kakaoShareFloat');
+  const calendar = document.getElementById('calendar');
+  if (float && calendar) {
+    let ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        const rect = calendar.getBoundingClientRect();
+        float.classList.toggle('is-visible', rect.top < window.innerHeight * 0.5);
+        ticking = false;
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    onScroll();
+  }
 })();

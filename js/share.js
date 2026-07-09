@@ -6,11 +6,8 @@
  */
 (function () {
   const url = 'https://yoonsimon.github.io/invite/';
-  const shareData = {
-    title: '소중한 분들을 초대합니다',
-    text: '2027년 4월 18일 일요일 오전 11시 · 규수당 문래점',
-    url: url,
-  };
+  // 링크만 공유 — 일시·위치 텍스트는 넣지 않는다 (카톡은 링크의 OG 미리보기 카드로 표시).
+  const shareData = { url: url };
 
   function doShare() {
     if (navigator.share) {

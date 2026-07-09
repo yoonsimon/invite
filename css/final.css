@@ -53,6 +53,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* 가로 넘침 클리핑 래퍼 — 플로팅 버튼은 이 밖(body 직속)에 있어 fixed 유지됨 */
+.page {
+  overflow-x: hidden;
+}
+
 img {
   max-width: 100%;
   display: block;

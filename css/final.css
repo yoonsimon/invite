@@ -844,48 +844,6 @@ a {
   display: block;
 }
 
-/* 플로팅 카카오톡 공유 (일정 섹션부터 왼쪽 하단) */
-.share-float {
-  position: fixed;
-  left: 16px;
-  bottom: 16px;
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px 10px 11px;
-  background: #1A1A1A;
-  color: #FFFFFF;
-  border: none;
-  border-radius: 999px;
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  font-weight: 500;
-  cursor: pointer;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
-  /* iOS 사파리에서 fixed가 스크롤 중에도 뷰포트에 붙어있도록 GPU 레이어로 승격 */
-  transform: translateZ(0);
-  will-change: transform;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  transition: transform 0.15s var(--ease-out);
-}
-
-.share-float:active {
-  transform: translateZ(0) scale(0.97);
-}
-
-.share-float__icon {
-  width: 22px;
-  height: 22px;
-  display: block;
-  flex-shrink: 0;
-}
-
-.share-float__label {
-  white-space: nowrap;
-}
-
 /* ============================================================
    Toast notification (created by main.js)
    ============================================================ */

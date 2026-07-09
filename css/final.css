@@ -561,12 +561,14 @@ a {
 
 .guestbook__row {
   display: flex;
+  flex-direction: column;
   gap: 8px;
   margin-bottom: 8px;
 }
 
 .guestbook__row input {
-  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
   padding: 9px 12px;
   font-size: 0.82rem;
   font-family: inherit;

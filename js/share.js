@@ -55,17 +55,15 @@
     if (el) el.addEventListener('click', doShare);
   });
 
-  // 플로팅 버튼: 일정(#calendar) 섹션에 도달하면 노출, 위로 올리면 숨김
+  // 플로팅 버튼: 첫 이미지(커버) 영역에서 스크롤을 내리기 시작하면 바로 노출, 최상단이면 숨김
   const float = document.getElementById('kakaoShareFloat');
-  const calendar = document.getElementById('calendar');
-  if (float && calendar) {
+  if (float) {
     let ticking = false;
     function onScroll() {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(function () {
-        const rect = calendar.getBoundingClientRect();
-        float.classList.toggle('is-visible', rect.top < window.innerHeight * 0.5);
+        float.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.15);
         ticking = false;
       });
     }

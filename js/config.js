@@ -51,7 +51,7 @@ const CONFIG = {
     'images/wedding-15.webp',
   ],
 
-  coverImage: 'images/wedding-cover.webp',
+  coverImage: 'images/wedding-cover.webp?v=2',
 
   // ===== 계좌 정보 =====
   // ⚠️ 실제 계좌번호는 여기 두지 말 것. Firestore `invite/private` 에서 런타임 로드.

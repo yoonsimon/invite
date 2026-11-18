@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
   <!-- Final styles -->
-  <link rel="stylesheet" href="css/final.css?v=10">
+  <link rel="stylesheet" href="css/final.css?v=12">
 </head>
 <body>
   <div class="page">
@@ -48,11 +48,11 @@
       </h1>
       <div class="cover__meta">
         <span class="cover__date">2027. 04. 18 일요일 오전 11시</span>
-        <span class="cover__meta-dot">·</span>
         <span class="cover__venue">규수당 문래점</span>
       </div>
+      <a class="cover__directions" href="#location">오시는 길</a>
     </div>
-    <div class="cover__scroll-hint">
+    <div class="cover__scroll-hint" aria-hidden="true">
       <div class="cover__arrow"></div>
     </div>
   </section>
@@ -146,8 +146,6 @@
         <p class="location__venue-name">규수당 문래점</p>
         <p class="location__address" id="venueAddress">서울 영등포구 문래로 164 SK리더스뷰 2층</p>
 
-        <div class="location__map" id="map"></div>
-
         <button class="location__copy-btn" id="copyAddressBtn">주소 복사</button>
 
         <div class="location__nav-buttons">
@@ -174,6 +172,8 @@
             티맵
           </a>
         </div>
+        <div class="location__map" id="map"></div>
+        <p class="location__map-note" id="mapFallback" hidden>위 지도 앱 버튼으로 길을 확인할 수 있습니다.</p>
       </div>
     </article>
   </section>
@@ -257,13 +257,13 @@
 
   <!-- Scripts (순서 고정) -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="js/config.js?v=2"></script>
+  <script src="js/config.js?v=4"></script>
   <script src="js/firebase-init.js"></script>
   <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=f8bba6bb7016e10cec2ab6108eda3f94"></script>
   <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.5/kakao.min.js"></script>
-  <script src="js/gallery.js"></script>
+  <script src="js/gallery.js?v=3"></script>
   <script src="js/calendar.js"></script>
-  <script src="js/location.js"></script>
+  <script src="js/location.js?v=2"></script>
   <script src="js/guestbook.js"></script>
   <script src="js/account.js"></script>
   <script src="js/secret.js"></script>

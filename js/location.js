@@ -30,12 +30,9 @@ function initKakaoMap(lat, lng, venue) {
   if (!mapEl) return;
 
   function showFallback() {
-    mapEl.innerHTML = `
-      <div style="display:flex;align-items:center;justify-content:center;height:100%;color:#999;font-size:0.85rem;flex-direction:column;gap:8px;">
-        <span style="font-size:2rem;">🗺️</span>
-        <span>카카오맵을 불러올 수 없습니다</span>
-      </div>
-    `;
+    mapEl.hidden = true;
+    const fallback = document.getElementById('mapFallback');
+    if (fallback) fallback.hidden = false;
   }
 
   if (typeof kakao === 'undefined' || typeof kakao.maps === 'undefined') {

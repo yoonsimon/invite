@@ -34,12 +34,24 @@ const CONFIG = {
   // ===== 갤러리 이미지 =====
   // images/ 폴더에 사진을 넣고 파일명을 아래에 추가하세요
   gallery: [
-    // 갤러리 사진 추가 예정 — 임시로 커버 1장. images/에 넣고 여기 파일명 추가.
-    'images/og-cover.jpg',
+    'images/wedding-01.webp',
+    'images/wedding-09.webp',
+    'images/wedding-10.webp',
+    'images/wedding-02.webp',
+    'images/wedding-03.webp',
+    'images/wedding-04.webp',
+    'images/wedding-11.webp',
+    'images/wedding-05.webp',
+    'images/wedding-12.webp',
+    'images/wedding-13.webp',
+    'images/wedding-14.webp',
+    'images/wedding-06.webp',
+    'images/wedding-07.webp',
+    'images/wedding-08.webp',
+    'images/wedding-15.webp',
   ],
 
-  // 메인 커버 이미지 (갤러리 첫 번째 사진 또는 별도 지정)
-  coverImage: 'images/og-cover.jpg',
+  coverImage: 'images/wedding-cover.webp',
 
   // ===== 계좌 정보 =====
   // ⚠️ 실제 계좌번호는 여기 두지 말 것. Firestore `invite/private` 에서 런타임 로드.

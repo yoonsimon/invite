@@ -32,26 +32,26 @@ const CONFIG = {
 축복해 주시면 감사하겠습니다.`,
 
   // ===== 갤러리 이미지 =====
-  // images/ 폴더에 사진을 넣고 파일명을 아래에 추가하세요
+  // Google Drive에 올린 청첩장 웹용 사진 주소
   gallery: [
-    'images/wedding-01.webp',
-    'images/wedding-09.webp',
-    'images/wedding-10.webp',
-    'images/wedding-02.webp',
-    'images/wedding-03.webp',
-    'images/wedding-04.webp',
-    'images/wedding-11.webp',
-    'images/wedding-05.webp',
-    'images/wedding-12.webp',
-    'images/wedding-13.webp',
-    'images/wedding-14.webp',
-    'images/wedding-06.webp',
-    'images/wedding-07.webp',
-    'images/wedding-08.webp',
-    'images/wedding-15.webp',
+    'https://lh3.googleusercontent.com/d/1v7bLUzf9tS4OlUKGz7T8Us4HG1VZHwKM',
+    'https://lh3.googleusercontent.com/d/14EVcH2Fq3uOzuO5hxrlu0oQ1ZDKq-rsM',
+    'https://lh3.googleusercontent.com/d/12hHwVhLTv1mcVCRLsta5vtJhlXpoDfDi',
+    'https://lh3.googleusercontent.com/d/1VmU2e4qPY2QdgRXruoh-14ca9t4m2Yzc',
+    'https://lh3.googleusercontent.com/d/1WPiwKZFD52onsKTHXU5AjiGmhlGKdq92',
+    'https://lh3.googleusercontent.com/d/1B0MyqiVQwi_AsDn5U0FPbUkKUnMgRCcT',
+    'https://lh3.googleusercontent.com/d/12tzbCfI3QM_W_Pg43_HSScLO5DQuR-YN',
+    'https://lh3.googleusercontent.com/d/1dSi107UsSNGT2VEPPPEBLMIucss09vw0',
+    'https://lh3.googleusercontent.com/d/1W7H0k9eYXQRWGLjw6-gqIzNJDqGEku0m',
+    'https://lh3.googleusercontent.com/d/1_ujoF6q2gQzVn2Xn2FkwbRRPDqM8Z-9V',
+    'https://lh3.googleusercontent.com/d/1mK9xzlo6PChbZq3o3Il0e3uipY-Sje8Z',
+    'https://lh3.googleusercontent.com/d/1mqIAd6ZjIY3m9xhE29ElhgHa0-gb-1VL',
+    'https://lh3.googleusercontent.com/d/1jXlFN8yw9RqR4fmngdgvaJDY-x-NF86p',
+    'https://lh3.googleusercontent.com/d/1cwTOg7f90CPz-freaF0Yf-uXWji3p0Lh',
+    'https://lh3.googleusercontent.com/d/1EwRYtbm-YtBaOhbfQN2tlwuD__SaB_0R',
   ],
 
-  coverImage: 'images/wedding-cover.webp?v=2',
+  coverImage: 'https://lh3.googleusercontent.com/d/11XGQpWJTOarPukbzdCoTAHBunXDVzcxp',
 
   // ===== 계좌 정보 =====
   // ⚠️ 실제 계좌번호는 여기 두지 말 것. Firestore `invite/private` 에서 런타임 로드.

@@ -5,6 +5,7 @@
  */
 (function () {
   const url = 'https://yoonsimon.github.io/invite/';
+  const imageUrl = document.querySelector('meta[property="og:image"]')?.content;
 
   // Kakao SDK 초기화 (JavaScript 키 = config.kakaoMapApiKey)
   if (typeof Kakao !== 'undefined' && CONFIG.kakaoMapApiKey) {
@@ -21,14 +22,14 @@
       typeof Kakao.isInitialized === 'function' &&
       Kakao.isInitialized();
 
-    if (kakaoReady) {
+    if (kakaoReady && imageUrl) {
       try {
         Kakao.Share.sendDefault({
           objectType: 'feed',
           content: {
             title: '소중한 분들을 초대합니다',
             description: '귀한 걸음으로 축복해 주세요\n4.18 규수당 문래점',
-            imageUrl: 'https://yoonsimon.github.io/invite/images/og-cover.jpg',
+            imageUrl,
             link: { mobileWebUrl: url, webUrl: url },
           },
           buttons: [

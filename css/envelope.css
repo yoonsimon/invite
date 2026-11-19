@@ -1,0 +1,200 @@
+[data-preview='envelope'] body { --c-bg:#eee8e2; --c-surface:#fcfaf7; --c-text:#392f2a; --c-text-muted:#857871; --c-border:#d8cbc2; --c-border-inner:#eee5df; --c-accent:#714b3a; --c-accent-pale:#f1e5dc; }
+[data-preview='envelope'] .cover { height:auto; min-height:0; display:block; padding:28px 22px 32px; background:#eee8e2 !important; }
+[data-preview='envelope'] .cover__overlay, [data-preview='envelope'] .cover__scroll-hint, [data-preview='envelope'] .cover__directions { display:none; }
+[data-preview='envelope'] .cover__eyebrow { position:static; transform:none; margin:0 0 18px; color:#826b60; font-size:.63rem; letter-spacing:.32em; text-align:center; }
+[data-preview='envelope'] .cover__content { padding:20px 8px 17px; color:var(--c-text); }
+[data-preview='envelope'] .cover__names { font:400 clamp(2rem, 10vw, 2.7rem)/1.12 Georgia, 'Batang', serif; letter-spacing:-.05em; margin:0; }
+[data-preview='envelope'] .cover__ampersand { color:#966a56; }
+[data-preview='envelope'] .cover__meta { display:none; }
+[data-preview='envelope'] .section + .section { margin-top:0; }
+[data-preview='envelope'] .post-card { margin:0 22px; border:0; border-radius:0; border-top:1px solid #d6c7be; background:transparent; }
+[data-preview='envelope'] .post-card__header { justify-content:center; border:0; padding:29px 12px 9px; }
+[data-preview='envelope'] .post-card__avatar { display:none; }
+[data-preview='envelope'] .post-card__username { font:500 1.18rem/1.4 Georgia, 'Batang', serif; }
+[data-preview='envelope'] .post-card__body { padding-bottom:31px; }
+[data-preview='envelope'] .post-card__body--gallery { padding:8px 0 31px; }
+[data-preview='envelope'] .gallery__viewer { background:#46372f; }
+[data-preview='envelope'] .gallery__grid-item.active::after { border-color:#714b3a; }
+[data-preview='envelope'] .footer { margin-top:0; background:#714b3a; }
+
+/* A single paper envelope opens to reveal one printed invitation sheet. */
+[data-preview='envelope'] body {
+  --font-sans: 'Nanum Gothic', 'Malgun Gothic', system-ui, sans-serif;
+  --font-display: var(--font-sans);
+  --c-bg: #f4ebe0;
+  --c-surface: #fffaf1;
+  --c-text: #35251f;
+  --c-text-muted: #624438;
+  --c-border: #d6c1ac;
+  --c-border-inner: #e9dacc;
+  --c-accent: #674534;
+  --c-accent-pale: #efe0d2;
+  --c-sun: var(--c-text-muted);
+  --c-sat: var(--c-text-muted);
+}
+
+[data-preview='envelope'] .post-card__username { font-family: var(--font-sans); }
+[data-preview='envelope'] :is(.greeting__parent, .guestbook__item-date, .guestbook__item-delete, .location__address) { color: var(--c-text-muted); }
+[data-preview='envelope'] .location__nav-icon { filter: grayscale(1) sepia(.28); }
+.envelope-intro {
+  --reveal-length:clamp(900px, 120svh, 1100px); --flap-angle:0deg; --sheet-y:64%; --pocket-y:0%;
+  --back-alpha:1; --seal-alpha:1; --front-alpha:1; --window-mask:1;
+  position:relative; min-height:calc(100svh + var(--reveal-length)); background:var(--c-bg) !important; color:var(--c-text);
+}
+.envelope-intro__viewport { position:sticky; top:0; height:100svh; min-height:500px; overflow:hidden; padding:max(28px,env(safe-area-inset-top)) 24px max(23px,env(safe-area-inset-bottom)); }
+/* A horizontal envelope crossing the edges of a full-screen stationery scene. */
+.envelope-display {
+  --envelope-height: clamp(175px, 63vw, 285px);
+  --envelope-top: calc(53% - var(--envelope-height) / 2);
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+  perspective: 1200px;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 48% 28%, #fcf5e9 4%, #eee1d0 61%, #e1cdb8 100%);
+}
+.envelope-display::before {
+  content: '';
+  position: absolute;
+  inset: 13px;
+  border: 1px solid #67453429;
+  pointer-events: none;
+}
+.envelope-display__back,
+.envelope-display__pocket,
+.envelope-display__flap {
+  position: absolute;
+  top: var(--envelope-top);
+  left: 50%;
+  width: min(calc(100% + 24px), 500px);
+  height: var(--envelope-height);
+  margin-left: calc(min(calc(100% + 24px), 500px) / -2);
+}
+.envelope-display__back {
+  z-index: 0;
+  opacity: var(--back-alpha);
+  border-radius: 5px;
+  background: linear-gradient(145deg, #79523d, #a1795d 72%, #896047);
+  box-shadow: 0 14px 24px #42271936, 0 2px 3px #42271920;
+}
+.envelope-display__window {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  overflow: hidden;
+  clip-path: inset(0 0 max(0px, calc((100% - var(--envelope-top) - var(--envelope-height)) * var(--window-mask))) 0);
+}
+.envelope-display__seal {
+  position: absolute;
+  z-index: 5;
+  isolation: isolate;
+  top: calc(var(--envelope-top) + var(--envelope-height) * .58);
+  left: 50%;
+  display: grid;
+  width: clamp(48px, 14vw, 57px);
+  aspect-ratio: 1.04;
+  place-items: center;
+  border: 1px solid #814735;
+  border-radius: 48% 53% 45% 51% / 47% 44% 54% 55%;
+  transform: translate(-50%, -50%) rotate(-7deg);
+  background:
+    radial-gradient(ellipse at 28% 16%, #d4866259 0, transparent 42%),
+    radial-gradient(ellipse at 66% 81%, #4b221760 0, transparent 59%),
+    #98553e;
+  color: #d28b66;
+  box-shadow:
+    0 4px 7px #49291e65,
+    inset 1px 2px 2px #e69b714f,
+    inset -2px -3px 3px #58291990;
+  font: 700 clamp(15px, 4.4vw, 19px)/1 var(--font-sans);
+  text-shadow: 0 1px 1px #542515, 0 -1px #efaa7a89;
+  opacity: var(--seal-alpha);
+}
+.envelope-display__seal::before,
+.envelope-display__seal::after {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  border-radius: 50%;
+  pointer-events: none;
+}
+.envelope-display__seal::before {
+  inset: 11%;
+  border: 1px solid #713725;
+  box-shadow: 0 1px #d88e6266, inset 0 1px 2px #622b1d80;
+  background: radial-gradient(circle at 35% 24%, #aa6349, #86422f 76%);
+}
+.envelope-display__seal::after {
+  inset: 18%;
+  border: 1px dotted #d897697d;
+}
+
+/* It is never faded in: the pocket physically occludes the same sheet. */
+.envelope-display__letter { position:absolute; inset:6% 8% auto; width:84%; padding:10px 10px clamp(58px, 13svh, 112px); background:#faf6ec; box-shadow:0 11px 20px #4227193b,0 1px 2px #42271935; transform:translateY(var(--sheet-y)); }
+.invitation-sheet__kicker { margin:7px 0 8px; color:var(--c-accent); font:700 .66rem/1 var(--font-sans); letter-spacing:.23em; text-align:center; }
+.invitation-sheet__photo { display:block; width:100%; height:min(41svh,350px); object-fit:cover; object-position:center 43%; }
+.invitation-sheet__names { margin:13px 0 5px; color:var(--c-text); font:700 clamp(1.22rem,6.3vw,1.7rem)/1.15 var(--font-sans); letter-spacing:.03em; text-align:center; }
+.invitation-sheet__names .cover__ampersand { margin:0 6px; color:var(--c-accent); font-size:.75em; opacity:1; }
+.invitation-sheet__rule { width:28px; height:1px; margin:10px auto; background:var(--c-border); }
+.invitation-sheet__meta { color:var(--c-text-muted); font-size:clamp(.8rem,3.6vw,.88rem); font-weight:700; line-height:1.6; text-align:center; }
+.invitation-sheet__message { margin:12px 0 0; color:var(--c-text-muted); font:400 .8rem/1.55 var(--font-sans); text-align:center; }
+
+/* A shallow lip is a real slot: card corners clear together instead of through a triangular mask. */
+.envelope-display__pocket {
+  z-index: 3;
+  background:
+    repeating-linear-gradient(17deg, #f9f6e908 0 1px, transparent 1px 4px),
+    linear-gradient(158deg, #a78064, #91694e);
+  clip-path: polygon(0 24%, 50% 30%, 100% 24%, 100% 100%, 0 100%);
+  border-radius: 0 0 5px 5px;
+  box-shadow: inset 0 -1px 0 #50321f70;
+  transform: translateY(var(--pocket-y));
+}
+.envelope-display__flap {
+  z-index: 4;
+  opacity: var(--back-alpha);
+  background:
+    repeating-linear-gradient(13deg, #fffdf010 0 1px, transparent 1px 4px),
+    linear-gradient(157deg, #c6a181, #a17a5c 84%);
+  clip-path: polygon(0 0, 100% 0, 100% 4%, 50% 60%, 0 4%);
+  border-radius: 5px 5px 0 0;
+  filter: drop-shadow(0 3px 2px #4829188c);
+  transform-origin: center top;
+  transform: rotateX(var(--flap-angle));
+}
+[data-flap-behind] .envelope-display__flap { z-index: 1; }
+
+/* Printed directly on the envelope face, not in a floating interface card. */
+.envelope-front-copy { position:absolute; z-index:8; top:clamp(30px, 10svh, 85px); right:32px; left:32px; color:var(--c-text); opacity:var(--front-alpha); text-align:center; }
+.envelope-front-copy__kicker { margin-bottom:8px; color:var(--c-accent); font:700 .68rem/1 var(--font-sans); letter-spacing:.22em; }
+.envelope-front-copy__names { margin:0 0 12px; min-height:1.2em; font:700 clamp(1.35rem,7.4vw,2rem)/1.1 var(--font-sans); letter-spacing:.035em; }
+.envelope-front-copy__names .front-amp { margin:0 6px; color:var(--c-accent); font-size:.72em; }
+.envelope-front-copy__date { font:700 clamp(.82rem,3.6vw,.9rem)/1.55 var(--font-sans); }
+.envelope-front-copy__venue { margin-top:2px; font-size:clamp(.8rem,3.5vw,.86rem); }
+.envelope-intro__hint { position:absolute; z-index:8; bottom:max(78px,calc(env(safe-area-inset-bottom) + 55px)); left:20px; right:20px; color:var(--c-text-muted); font-size:.8rem; font-weight:700; letter-spacing:.03em; text-align:center; opacity:var(--front-alpha); }
+.envelope-intro__links { position:absolute; z-index:9; right:24px; bottom:max(23px,env(safe-area-inset-bottom)); left:24px; display:flex; justify-content:flex-end; }
+.envelope-intro__links a { display:inline-flex; align-items:center; justify-content:center; min-height:44px; padding:0 2px; border-bottom:1px solid var(--c-text-muted); color:var(--c-text); font-size:.9rem; font-weight:700; }
+.envelope-intro__links a::after { content:'→'; margin-left:8px; color:var(--c-accent); }
+.envelope-intro__links a:hover, .envelope-intro__links a:focus-visible { color:var(--c-accent); border-color:var(--c-accent); }
+
+/* Once the sheet has emerged, its paper and the first content section share one ground. */
+[data-preview='envelope'] .envelope-intro + .section { background:var(--c-bg); }
+[data-preview='envelope'] .envelope-intro + .section .post-card { margin-top:0; padding-top:12px; }
+/* The first prose is the continuation of the sheet, not a delayed feed card. */
+[data-preview='envelope'] .post-card { animation:none; }
+[data-preview='envelope'] .fade-in { opacity:1; transform:none; transition:none; }
+
+@media (max-width:340px) {
+  .envelope-intro__viewport { padding-inline:14px; }
+  .envelope-display::before { inset:9px; }
+  .envelope-front-copy { right:20px; left:20px; }
+  .envelope-intro__links { right:14px; left:14px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html[data-preview='envelope'] { scroll-behavior:auto; }
+  html[data-preview='envelope'] *, html[data-preview='envelope'] *::before, html[data-preview='envelope'] *::after { animation:none !important; transition:none !important; }
+  .envelope-intro { min-height:100svh; --sheet-y:0% !important; --pocket-y:105% !important; --back-alpha:0 !important; --seal-alpha:0 !important; --front-alpha:0 !important; --window-mask:0 !important; }
+  .envelope-intro__viewport { position:relative; }
+  .envelope-display__flap { opacity:0; transform:rotateX(-170deg) !important; }
+}

@@ -43,6 +43,7 @@ function initGallery() {
     on: {
       slideChange: function () {
         updateGridActive(this.activeIndex);
+        revealThumbnail(this.activeIndex);
         showPhotoNumber(this.activeIndex);
       },
     },
@@ -62,6 +63,17 @@ function initGallery() {
     });
     grid.appendChild(item);
   });
+
+  function revealThumbnail(index) {
+    const item = grid.children[index];
+    if (!item) return;
+    const top = item.offsetTop;
+    const bottom = top + item.offsetHeight;
+    if (top < grid.scrollTop) grid.scrollTop = top;
+    else if (bottom > grid.scrollTop + grid.clientHeight) {
+      grid.scrollTop = bottom - grid.clientHeight;
+    }
+  }
 
   function updateGridActive(activeIndex) {
     const items = grid.querySelectorAll('.gallery__grid-item');

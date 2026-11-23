@@ -32,7 +32,7 @@
 
   <!-- Final styles -->
   <link rel="stylesheet" href="css/final.css?v=13">
-  <link rel="stylesheet" href="css/envelope.css?v=1">
+  <link rel="stylesheet" href="css/envelope.css?v=2">
 </head>
 <body>
   <div class="page">
@@ -98,10 +98,12 @@
           <div class="swiper-wrapper">
             <!-- JS에서 동적 생성 -->
           </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
         </div>
         <!-- 3열 인스타 그리드 -->
+        <div class="photo-controls">
+          <button type="button" class="swiper-button-prev">이전 사진</button>
+          <button type="button" class="swiper-button-next">다음 사진</button>
+        </div>
         <div class="gallery__grid" id="galleryGrid">
           <!-- JS에서 동적 생성 -->
         </div>
@@ -258,7 +260,7 @@
 
   <!-- Scripts (순서 고정) -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="js/config.js?v=9"></script>
+  <script src="js/config.js?v=10"></script>
   <script src="js/firebase-init.js"></script>
   <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=f8bba6bb7016e10cec2ab6108eda3f94"></script>
   <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.5/kakao.min.js"></script>
@@ -269,7 +271,8 @@
   <script src="js/account.js"></script>
   <script src="js/secret.js"></script>
   <script src="js/main.js"></script>
-  <script src="js/envelope.js?v=1"></script>
+  <script src="js/envelope.js?v=2"></script>
   <script src="js/share.js?v=10"></script>
+  <script src="js/gallery-scroll.js?v=1"></script>
 </body>
 </html>

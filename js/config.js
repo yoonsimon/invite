@@ -54,6 +54,7 @@ const CONFIG = {
     'https://lh3.googleusercontent.com/d/1B5jJrCwzlSHReZYpZnyibRcYj-DiVf_h',
     'https://lh3.googleusercontent.com/d/1wTNFYuKxato7Q_V0B9ZIlz56fXG4FFkY',
     'https://lh3.googleusercontent.com/d/1c9mXz948qjLzAsKF0Ahjh5esB_ZgLbNZ',
+    'https://lh3.googleusercontent.com/d/1SnfXHAZHXOFnYB6Vm3_S3w_tTBnX05D3',
   ],
 
   coverImage: 'https://lh3.googleusercontent.com/d/11XGQpWJTOarPukbzdCoTAHBunXDVzcxp',

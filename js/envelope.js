@@ -16,7 +16,7 @@
         </div>
         <div class="envelope-front-copy"><p class="envelope-front-copy__kicker">WEDDING INVITATION</p><p class="envelope-front-copy__names"></p><p class="envelope-front-copy__date"></p><p class="envelope-front-copy__venue"></p></div>
         <p class="envelope-intro__hint">천천히 위로 올려 봉투를 열어주세요</p>
-        <nav class="envelope-intro__links" aria-label="초대장 바로가기"><a href="#location">오시는 길</a></nav>
+        <nav class="envelope-intro__links" aria-label="초대장 바로가기"><a href="#gallery">사진 보기</a><a href="#location">오시는 길</a></nav>
       </div>`;
     const date = CONFIG.wedding.displayDate;
     const venue = [CONFIG.wedding.venue, CONFIG.wedding.hall].filter(Boolean).join(' ');
@@ -46,7 +46,7 @@
       const progress = Math.max(0, Math.min(1, -intro.getBoundingClientRect().top / length));
       const unseal = Math.min(1, progress / .14);
       const opening = Math.max(0, Math.min(1, (progress - .14) / .32));
-      const lift = Math.max(0, Math.min(1, (progress - .34) / .48));
+      const lift = Math.max(0, Math.min(1, (progress - .20) / .43));
       const pocket = Math.max(0, Math.min(1, (progress - .67) / .33));
       intro.style.setProperty('--flap-angle', `${-opening * 170}deg`);
       intro.style.setProperty('--sheet-y', `${64 - 64 * lift}%`);
@@ -55,7 +55,7 @@
       intro.style.setProperty('--window-mask', 1 - pocket);
       intro.style.setProperty('--seal-alpha', 1 - unseal);
       // Front printing belongs to the envelope: clear it before the card reaches the slot.
-      intro.style.setProperty('--front-alpha', Math.max(0, 1 - Math.max(0, (progress - .34) / .18)));
+      intro.style.setProperty('--front-alpha', Math.max(0, 1 - Math.max(0, (progress - .20) / .14)));
       intro.toggleAttribute('data-flap-behind', opening > .5);
     };
     const queue = () => { if (!pending) { pending = true; requestAnimationFrame(update); } };

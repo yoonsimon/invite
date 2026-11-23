@@ -198,3 +198,35 @@
   .envelope-intro__viewport { position:relative; }
   .envelope-display__flap { opacity:0; transform:rotateX(-170deg) !important; }
 }
+
+@media (max-width: 540px) {
+  .envelope-intro { --reveal-length: clamp(500px, 72svh, 640px); }
+  .envelope-front-copy { top: 12svh; }
+  .envelope-front-copy__names { font: 600 clamp(28px, 8vw, 34px)/1.22 'Batang', 'Malgun Gothic', serif; margin: 10px 0 13px; }
+  .envelope-front-copy__date { font-size: 15px; }
+  .envelope-front-copy__venue { font-size: 14px; }
+  .envelope-intro__hint { bottom: 15svh; font-size: 14px; }
+  .invitation-sheet__meta { font-size: 14px; }
+  [data-preview='envelope'] #greeting .post-card { margin-inline: 20px; }
+  [data-preview='envelope'] #greeting .post-card__header { padding: 34px 0 18px; }
+  [data-preview='envelope'] #greeting h2 { font: 600 23px/1.4 'Batang', 'Malgun Gothic', serif; }
+  [data-preview='envelope'] #greeting .post-card__body { padding: 0 8px 36px; }
+  #greeting .greeting__text { font-size: 16px; line-height: 1.9; color: #47342a; margin: 0 auto 26px; }
+  #greeting .greeting__names { padding-top: 21px; font-size: 15px; }
+  #greeting .greeting__parent { font-size: 14px; }
+}
+.envelope-intro__links {justify-content:space-between;gap:20px}
+.envelope-intro__links a {min-height:48px}
+.photo-controls {display:flex;gap:12px;margin:12px 0}
+#gallery .photo-controls button {position:static;inset:auto;transform:none;margin:0;flex:1;width:auto;min-height:48px;background:transparent;border:1px solid #ae9d8c;border-radius:4px;color:#49392e;font:inherit;display:inline-flex;align-items:center;justify-content:center}
+#gallery .photo-controls button::after {content:none}
+#gallery .photo-controls button:disabled {opacity:.5}
+.gallery__viewer--single + .photo-controls {display:none}
+@media(prefers-reduced-motion:reduce){.envelope-intro {--reveal-length:0px}.envelope-intro__hint {visibility:hidden}}
+
+.gallery-scroll-frame{position:relative}
+.gallery-scroll-frame .gallery__grid{scrollbar-width:none;padding-inline-end:12px}
+.gallery-scroll-frame .gallery__grid::-webkit-scrollbar{display:none}
+.gallery-scroll-frame .gallery__grid:focus-visible{outline:2px solid #805840;outline-offset:-2px}
+.gallery-scroll-track{position:absolute;inset-block:5px;inset-inline-end:4px;width:4px;border-radius:4px;background:#d6bea9;pointer-events:none}
+.gallery-scroll-thumb{display:block;width:100%;height:var(--thumb-size,0px);transform:translateY(var(--thumb-offset,0px));border-radius:inherit;background:#805840}

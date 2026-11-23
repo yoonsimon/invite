@@ -1,0 +1,69 @@
+@font-face {
+  font-family: "Invite Pretendard";
+  src: url("./PretendardVariable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+[data-preview="envelope"] {
+  --invite-b-type: "Invite Pretendard", sans-serif;
+}
+
+[data-preview="envelope"] .envelope-front-copy__names,
+[data-preview="envelope"] .invitation-sheet__names .cover__names {
+  font: 580 clamp(28px, 7.8vw, 32px)/1.24 var(--invite-b-type);
+  letter-spacing: -.025em;
+}
+
+[data-preview="envelope"] #greeting h2,
+[data-preview="envelope"] .post-card .section__title {
+  font: 650 22px/1.45 var(--invite-b-type);
+  letter-spacing: -.035em;
+}
+
+.invitation-sheet__names .cover__ampersand,
+.envelope-front-copy__names .front-amp {
+  font-family: var(--invite-b-type);
+}
+
+#greeting .greeting__text {
+  font: 420 16px/1.85 var(--invite-b-type);
+  letter-spacing: -.012em;
+}
+
+#greeting .greeting__names,
+#greeting .greeting__names p,
+.invitation-sheet__message {
+  font-family: var(--invite-b-type);
+  font-weight: 480;
+}
+
+[data-preview="envelope"] .envelope-intro__links a,
+#gallery .photo-controls button,
+#location .location__copy-btn,
+[data-preview="envelope"] .location__nav-btn,
+[data-preview="envelope"] .guestbook__submit,
+[data-preview="envelope"] .account__toggle,
+[data-preview="envelope"] .account__copy,
+[data-preview="envelope"] .share-btn {
+  font-family: var(--invite-b-type);
+  font-weight: 620;
+}
+
+@media (max-width: 540px) {
+  [data-preview="envelope"] .envelope-intro__links a { letter-spacing: .918px; }
+  #location .location__copy-btn { letter-spacing: 1.34px; }
+  [data-preview="envelope"] .share-btn { letter-spacing: .932px; }
+  [data-preview="envelope"] .guestbook__submit { line-height: 14px; }
+  [data-preview="envelope"] .account__toggle { line-height: 16px; }
+  [data-preview="envelope"] .account__copy {
+    line-height: 15px;
+    letter-spacing: 1.748px;
+  }
+}
+.envelope-front-copy .envelope-front-copy__kicker {
+  font-family: var(--invite-b-type);
+  font-weight: 500;
+  letter-spacing: .12em;
+}

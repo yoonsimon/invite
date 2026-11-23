@@ -200,7 +200,6 @@
 }
 
 @media (max-width: 540px) {
-  .envelope-intro { --reveal-length: clamp(500px, 72svh, 640px); }
   .envelope-front-copy { top: 12svh; }
   .envelope-front-copy__names { font: 600 clamp(28px, 8vw, 34px)/1.22 'Batang', 'Malgun Gothic', serif; margin: 10px 0 13px; }
   .envelope-front-copy__date { font-size: 15px; }

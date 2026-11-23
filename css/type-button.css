@@ -1,0 +1,63 @@
+/* Load after the invitation styles. */
+@media (max-width: 540px) {
+  :root {
+    --invite-title: "Nanum Myeongjo", "AppleMyungjo", Batang, "Noto Serif CJK KR", serif;
+    --invite-ink: #49362d;
+    --invite-border: #a89481;
+  }
+  .envelope-front-copy .envelope-front-copy__names,
+  .invitation-sheet__names .cover__names {
+    font-family: var(--invite-title);
+    font-size: clamp(27px, 7.6vw, 32px);
+    font-weight: 700;
+    letter-spacing: -.035em;
+    line-height: 1.35;
+  }
+  .envelope-front-copy .envelope-front-copy__date,
+  .envelope-front-copy .envelope-front-copy__venue,
+  .invitation-sheet__meta {
+    font-size: 15px;
+    line-height: 1.6;
+    font-variant-numeric: tabular-nums;
+  }
+  [data-preview="envelope"] .post-card .section__title {
+    font: 700 23px/1.45 var(--invite-title);
+    letter-spacing: -.035em;
+    color: var(--invite-ink);
+  }
+  #greeting .greeting__text {
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--invite-ink);
+    word-break: keep-all;
+  }
+  .envelope-intro__links a,
+  #gallery .photo-controls button,
+  #location .location__copy-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding-inline: 14px;
+    border: 1px solid var(--invite-border);
+    border-radius: 5px;
+    background: #fffaf2;
+    color: var(--invite-ink);
+    box-shadow: none;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  #gallery .photo-controls button:disabled {
+    border-color: #d9cfc3;
+    background: #f6f2ed;
+    color: #786d62;
+    opacity: 1;
+  }
+  .envelope-intro__links a:focus-visible,
+  #gallery .photo-controls button:focus-visible,
+  #location .location__copy-btn:focus-visible {
+    outline: 2px solid #703c21;
+    outline-offset: 2px;
+  }
+}

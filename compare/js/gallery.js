@@ -14,10 +14,7 @@ function initGallery() {
   // Swiper 슬라이드 생성
   const dialog = document.querySelector('.gallery-dialog');
   const largeImage = dialog.querySelector('img');
-  dialog.querySelector('button').addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', (event) => {
-    if (event.target === dialog) dialog.close();
-  });
+  dialog.addEventListener('click', () => dialog.close());
 
   images.forEach((src, index) => {
     const slide = document.createElement('div');

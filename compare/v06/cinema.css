@@ -1,0 +1,56 @@
+@font-face{font-family:Program Serif;src:url(../selected/NanumMyeongjo-Regular.ttf)}
+html{background:#21211f;scrollbar-width:none}
+html[data-preview] body{--c-bg:#f3eee2;--c-surface:#f3eee2;--c-text:#24231e;--c-text-muted:#625d51;--c-accent:#9d311c;--c-accent-pale:#e9ddcc;--c-border:#aba391;--c-border-inner:#cec5b5;--card-gap:0;--serif:Georgia,"Program Serif",serif;--mono:"Courier New",monospace;background:var(--c-bg)}
+.poster{min-height:max(710px,100svh);padding:17px 20px 13px;color:#f7f1df;background:#20201d;display:grid;grid-template-rows:auto auto minmax(210px,1fr) auto auto;align-content:stretch}
+.marquee{display:flex;justify-content:space-between;border-block:1px solid #888476;padding:8px 0;font:12px/1.1 var(--mono);letter-spacing:.06em}
+.poster h1{margin:21px 0 17px;color:#ff7450;font:400 clamp(79px,23.8vw,118px)/.76 Georgia,serif;letter-spacing:-.082em}
+.poster h1 i{display:block;text-align:right;font-weight:400;padding-right:.05em}
+.poster h1 br{display:none}
+.still{position:relative;margin:0;isolation:isolate;background:#403f39}
+.still img{position:absolute;width:100%;height:100%;object-fit:cover;object-position:50% 42%;filter:grayscale(1) contrast(1.05)}
+.still figcaption{position:absolute;bottom:10px;left:10px;background:#20201de8;padding:6px 10px;color:#fff7e6;font:14px/1.3 "Program Serif",serif}
+.billing{padding:17px 0;text-align:center}
+.billing p{font:25px/1.4 "Program Serif",serif;margin:0 0 7px}
+.billing time,.billing small{display:block;font-size:14px;line-height:1.55}
+.cover__groom:empty+.connector,.cover__groom:not(:empty)~.default-name{display:none}
+.poster nav{display:grid;grid-template-columns:1.4fr 1fr;border:1px solid #969183}
+.poster nav a{display:flex;align-items:center;justify-content:center;min-height:46px;font-size:15px;gap:16px}
+.poster nav a:first-child{background:#f2e9d5;color:#211e19}
+.page .section{position:relative;margin:0;padding:31px 23px 36px;background:var(--c-bg);color:var(--c-text);border-bottom:1px solid var(--c-border)}
+.page .section::before{content:attr(data-program);display:block;border-block-start:2px solid currentColor;padding-top:8px;font:italic 19px/1 Georgia,serif;color:var(--c-accent)}
+.page .section .post-card{border:0;margin:0;box-shadow:none;border-radius:0;background:none}
+.page .section .post-card__header{display:block;border:0;padding:17px 0 21px;text-align:left}
+html[data-preview] .page .post-card .section__title{font:400 32px/1.25 "Program Serif",serif;letter-spacing:-.07em;color:var(--c-text)}
+.page .section .post-card__body{padding:0}
+.page .fade-in{opacity:1;transform:none}
+#greeting .greeting__text{text-align:left;color:var(--c-text);font:400 19px/1.94 "Program Serif",serif;letter-spacing:-.04em;margin:0}
+#greeting .greeting__names{text-align:right;border-top:1px dotted var(--c-border);margin-top:24px;padding:13px 0 0;font-size:15px}
+#gallery,.page .footer{--c-bg:#282824;--c-text:#faf3df;--c-accent:#ff9679;--c-border:#827f70}
+#gallery .gallery__viewer{background:#181917;border-block:10px solid #181917}
+#gallery .gallery__grid{gap:3px;grid-template-columns:repeat(4,1fr)}
+#gallery .photo-controls{justify-content:space-between;border-bottom:1px solid #78776a;margin:0 0 12px;padding:9px 0}
+.photo-controls::before{content:"CONTACT SHEET";font:12px var(--mono);letter-spacing:.07em;color:#d6d2c4}
+.photo-controls .gallery__counter{font:16px var(--mono);color:#fff5de}
+#galleryViewer .swiper-button-prev,#galleryViewer .swiper-button-next{background:#22221fe6;color:#fff;border:1px solid #aaa69b;border-radius:0;width:44px;height:44px}
+.gallery-dialog{background:#1f201d}.gallery-dialog button{background:#f5eada;color:#252520}
+.page .calendar__datetime{font-weight:600;text-align:left}
+#calendarGrid{margin:18px auto 12px;border-block:1px solid var(--c-border);padding-block:12px}
+#calendarGrid .calendar__day{font:18px Georgia,serif}
+#calendarGrid .calendar__day--wedding{background:var(--c-accent);color:white;border-radius:0}
+#dday{background:none;color:var(--c-accent);font:15px/1.5 var(--font-sans)}
+#location .post-card__body,#account .post-card__body{text-align:left}
+#location .location__venue-name{font:600 22px var(--font-sans)}
+#location .location__copy-btn,.page .location__nav-btn,.page .account__toggle,.page .guestbook__submit,.page .share-btn{border-radius:0;box-shadow:none;letter-spacing:0}
+#location .location__copy-btn{color:var(--c-accent);background:none;border:0;border-bottom:1px solid;padding:0;min-height:44px}
+.page .location__nav-btn{border:1px solid var(--c-border);background:#fffaf0;color:var(--c-text);font-size:14px}
+#map{border:1px solid var(--c-border);border-radius:0}
+.page .account__group{border:0;border-bottom:1px solid var(--c-border);border-radius:0}
+.page .account__toggle{padding:14px 0;background:transparent;color:var(--c-text);border:0;border-top:1px solid var(--c-border)}
+.page .guestbook__form :is(input,textarea){background:#fbf8ef;color:var(--c-text);border:0;border-bottom:1px solid var(--c-border);border-radius:0}
+.page .guestbook__submit,.page .share-btn{background:#9d311c;color:#fff9ec;border:0;min-height:48px}
+.page .footer{background:#282824;text-align:center;padding:36px 23px;color:#faf3df}
+.page .footer p{font:italic 50px Georgia,serif;color:#ff9679;margin:24px 0 0}
+.page .share-btn{width:100%;justify-content:center;background:#f2e9d5;color:#24231e}
+.poster a:focus-visible,.gallery-dialog button:focus-visible{outline:3px solid #e8855e;outline-offset:-4px}
+
+#greeting .greeting__names .greeting__parent{color:#625d51}

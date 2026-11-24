@@ -1,0 +1,43 @@
+.opening,.opening *{box-sizing:border-box}
+.opening{font-family:'Invite Pretendard',Arial,sans-serif;min-height:100svh;display:grid}
+.opening a:focus-visible{outline:3px solid currentColor;outline-offset:-5px}
+.opening h1,.opening p,.opening figure{margin:0}
+.april{color:#39213d;background:#d7c1e1;padding:20px 22px 12px;grid-template-rows:auto auto minmax(250px,1fr) auto auto;min-height:max(675px,100svh);position:relative}
+.april .issue{display:flex;align-items:center;justify-content:space-between;border-block:1px solid #715579;padding:7px 0;font:600 10px/1.2 'Invite Pretendard',sans-serif;letter-spacing:.17em}
+.april h1{position:relative;z-index:1;text-align:center;font:italic 400 clamp(94px,29vw,136px)/.82 Georgia,'Times New Roman',serif;letter-spacing:-.092em;padding:8px 13px 0 0}
+.april .portrait{position:relative;min-height:0;margin:-2px 7px 0 27px}
+.april .portrait img{position:absolute;width:100%;height:100%;object-fit:cover;object-position:50% 43%}
+.april .spine{position:absolute;left:-22px;bottom:0;writing-mode:vertical-rl;transform:rotate(180deg);font:italic 17px/1 Georgia,serif;letter-spacing:.02em}
+.april .signature{padding:16px 0;text-align:center}
+.april .pair{font:500 29px/1.24 'Batang','Georgia',serif;letter-spacing:-.06em}
+.april .details{font-size:13px;margin-top:6px;line-height:1.6}
+.april .turn{display:flex;align-items:center;justify-content:space-between;min-height:46px;border-top:1px solid #715579;font-size:15px;font-weight:600}
+.april .turn span{font:italic 26px Georgia,serif}
+.grid{color:#123cbb;background:#fff;padding:0 19px 14px;grid-template-rows:auto auto auto minmax(110px,1fr) auto;min-height:max(660px,100svh)}
+.grid .head,.grid .ledger,.grid .dateline{display:grid;grid-template-columns:1fr 1fr}
+.grid .head{padding:18px 0 10px;align-items:end;border-bottom:4px solid currentColor;font-size:12px;font-weight:700}
+.grid .head span:last-child{text-align:right}
+.grid .dateline{grid-template-columns:57% 43%;border-bottom:1px solid currentColor;align-items:stretch}
+.grid .date{font:780 clamp(90px,29vw,135px)/.81 Arial,sans-serif;letter-spacing:-.11em;padding:14px 0 18px}
+.grid .date span{display:block}
+.grid .side{border-left:1px solid currentColor;display:flex;flex-direction:column;justify-content:space-between;padding:15px 0 15px 12px;font:700 14px/1.05 Arial,sans-serif}
+.grid .side strong{font-size:clamp(28px,9vw,42px);letter-spacing:-.07em}
+.grid .ledger{grid-template-columns:32% 68%;margin:0}
+.grid .ledger>*{margin:0;border-bottom:1px solid currentColor;padding:10px 0}
+.grid .ledger dt{font:650 11px/24px 'Invite Pretendard',sans-serif;letter-spacing:.06em}
+.grid .ledger dd{font:650 19px/24px 'Invite Pretendard',sans-serif;letter-spacing:-.045em}
+.grid .landscape{position:relative;margin:14px 0 0;min-height:135px;background:#e4e9fa}
+.grid .landscape img{position:absolute;width:100%;height:100%;object-fit:cover;object-position:center 52%}
+.grid nav{display:grid;grid-template-columns:1.2fr 1fr;background:#123cbb;color:white}
+.grid nav a{padding:15px 12px;display:flex;align-items:center;justify-content:space-between;font-size:15px;font-weight:650}
+.grid nav a + a{border-left:1px solid #a3b7fb}
+.grid nav b{font-size:19px}
+body:has(.april){background:#f6f0f7;--invite-ink:#39213d;--c-text:#39213d}
+body:has(.grid){background:white;--invite-ink:#123cbb;--c-text:#172846}
+body:has(.grid) .post-card{border-color:#123cbb}
+body:has(.grid) .post-card .post-card__header{justify-content:start}
+body:has(.grid) .post-card .section__title{color:#123cbb}
+@media(max-height:690px){.april{min-height:640px}.grid{min-height:625px}}
+
+.opening .cover__groom:empty + .connector,.opening .cover__groom:not(:empty) ~ .default-name{display:none}
+html{scrollbar-width:none}html::-webkit-scrollbar{display:none}

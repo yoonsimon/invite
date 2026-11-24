@@ -1,0 +1,28 @@
+html[data-preview] body {
+  --font-sans: 'Invite Pretendard', sans-serif;
+  --font-display: var(--font-sans);
+  --c-sun: var(--c-accent);
+  --c-sat: var(--c-text-muted);
+  color: var(--c-text);
+  background: var(--c-bg);
+}
+.section .post-card { background: transparent; }
+.page .section__inner { min-width: 0; }
+.page .gallery-scroll-track { background: var(--c-border-inner); }
+.page .gallery-scroll-thumb { background: var(--c-accent); }
+.page .gallery__grid-item.active::after { border: 3px solid var(--c-accent); }
+.page .guestbook__row { flex-direction: row; }
+.guestbook__row input { min-width: 0; }
+.page .guestbook__form :is(input, textarea) { min-height: 46px; font: 400 16px/1.5 var(--font-sans); }
+.page .guestbook__form textarea { min-height: 100px; }
+.page :is(.account__toggle,.account__copy,.guestbook__submit,.guestbook__pager button,.guestbook__item-delete) { min-height: 44px; }
+.page .guestbook__item-message { color: var(--c-text); overflow-wrap: anywhere; }
+.page .guestbook__pager { display: flex; align-items: center; }
+.page .guestbook__pager[hidden], .page .account__details:not(.open) { display: none; }
+.page .account__details.open { max-height: none; }
+.page .guestbook__pager button { min-width: 44px; font: inherit; color: var(--c-accent); background: transparent; }
+.page .guestbook__pager button:disabled { opacity: .45; }
+.page .location__nav-icon { filter: none; }
+.page .location__map-note { color: var(--c-text-muted); }
+.page :is(button,a,input,textarea,[tabindex]):focus-visible { outline: 3px solid var(--c-accent); outline-offset: -3px; }
+.page .footer button:focus-visible,.page .guestbook__submit:focus-visible { outline: 3px double white; outline-offset: -5px; }

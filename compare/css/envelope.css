@@ -1,0 +1,111 @@
+[data-preview='envelope'] body { --c-bg:#eee8e2; --c-surface:#fcfaf7; --c-text:#392f2a; --c-text-muted:#857871; --c-border:#d8cbc2; --c-border-inner:#eee5df; --c-accent:#714b3a; --c-accent-pale:#f1e5dc; }
+[data-preview='envelope'] .cover { height:auto; min-height:0; display:block; padding:28px 22px 32px; background:#eee8e2 !important; }
+[data-preview='envelope'] .cover__overlay, [data-preview='envelope'] .cover__scroll-hint, [data-preview='envelope'] .cover__directions { display:none; }
+[data-preview='envelope'] .cover__eyebrow { position:static; transform:none; margin:0 0 18px; color:#826b60; font-size:.63rem; letter-spacing:.32em; text-align:center; }
+[data-preview='envelope'] .cover__content { padding:20px 8px 17px; color:var(--c-text); }
+[data-preview='envelope'] .cover__names { font:400 clamp(2rem, 10vw, 2.7rem)/1.12 Georgia, 'Batang', serif; letter-spacing:-.05em; margin:0; }
+[data-preview='envelope'] .cover__ampersand { color:#966a56; }
+[data-preview='envelope'] .cover__meta { display:none; }
+[data-preview='envelope'] .section + .section { margin-top:0; }
+[data-preview='envelope'] .post-card { margin:0 22px; border:0; border-radius:0; border-top:1px solid #d6c7be; background:transparent; }
+[data-preview='envelope'] .post-card__header { justify-content:center; border:0; padding:29px 12px 9px; }
+[data-preview='envelope'] .post-card__avatar { display:none; }
+[data-preview='envelope'] .post-card__username { font:500 1.18rem/1.4 Georgia, 'Batang', serif; }
+[data-preview='envelope'] .post-card__body { padding-bottom:31px; }
+[data-preview='envelope'] .post-card__body--gallery { padding:8px 0 31px; }
+[data-preview='envelope'] .gallery__viewer { background:#46372f; }
+[data-preview='envelope'] .gallery__grid-item.active::after { border-color:#714b3a; }
+[data-preview='envelope'] .footer { margin-top:0; background:#714b3a; }
+
+/* A single paper envelope opens to reveal one printed invitation sheet. */
+[data-preview='envelope'] body {
+  --font-sans: 'Nanum Gothic', 'Malgun Gothic', system-ui, sans-serif;
+  --font-display: var(--font-sans);
+  --c-bg: #f4ebe0;
+  --c-surface: #fffaf1;
+  --c-text: #35251f;
+  --c-text-muted: #624438;
+  --c-border: #d6c1ac;
+  --c-border-inner: #e9dacc;
+  --c-accent: #674534;
+  --c-accent-pale: #efe0d2;
+  --c-sun: var(--c-text-muted);
+  --c-sat: var(--c-text-muted);
+}
+
+[data-preview='envelope'] .post-card__username { font-family: var(--font-sans); }
+[data-preview='envelope'] :is(.greeting__parent, .guestbook__item-date, .guestbook__item-delete, .location__address) { color: var(--c-text-muted); }
+[data-preview='envelope'] .location__nav-icon { filter: grayscale(1) sepia(.28); }
+/* Once the sheet has emerged, its paper and the first content section share one ground. */
+[data-preview='envelope'] .envelope-intro + .section { background:var(--c-bg); }
+[data-preview='envelope'] .envelope-intro + .section .post-card { margin-top:0; padding-top:12px; }
+/* The first prose is the continuation of the sheet, not a delayed feed card. */
+[data-preview='envelope'] .post-card { animation:none; }
+[data-preview='envelope'] .fade-in { opacity:1; transform:none; transition:none; }
+
+@media (max-width:340px) {
+  .envelope-intro__viewport { padding-inline:14px; }
+  .envelope-display::before { inset:9px; }
+  .envelope-front-copy { right:20px; left:20px; }
+  .envelope-intro__links { right:14px; left:14px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  html[data-preview='envelope'] { scroll-behavior:auto; }
+  html[data-preview='envelope'] *, html[data-preview='envelope'] *::before, html[data-preview='envelope'] *::after { animation:none !important; transition:none !important; }
+  .envelope-intro { min-height:100svh; --sheet-y:0% !important; --pocket-y:105% !important; --back-alpha:0 !important; --seal-alpha:0 !important; --front-alpha:0 !important; --pocket-travel:1 !important; }
+  .envelope-intro__viewport { position:relative; }
+  .envelope-display__flap { opacity:0; transform:rotateX(-170deg) !important; }
+}
+
+@media (max-width: 540px) {
+  .envelope-front-copy { top: 12svh; }
+  .envelope-front-copy__names { font: 600 clamp(28px, 8vw, 34px)/1.22 'Batang', 'Malgun Gothic', serif; margin: 10px 0 13px; }
+  .envelope-front-copy__date { font-size: 15px; }
+  .envelope-front-copy__venue { font-size: 14px; }
+  .envelope-intro__hint { bottom: 15svh; font-size: 14px; }
+  .invitation-sheet__meta { font-size: 14px; }
+  [data-preview='envelope'] #greeting .post-card { margin-inline: 20px; }
+  [data-preview='envelope'] #greeting .post-card__header { padding: 34px 0 18px; }
+  [data-preview='envelope'] #greeting h2 { font: 600 23px/1.4 'Batang', 'Malgun Gothic', serif; }
+  [data-preview='envelope'] #greeting .post-card__body { padding: 0 8px 36px; }
+  #greeting .greeting__text { font-size: 16px; line-height: 1.9; color: #47342a; margin: 0 auto 26px; }
+  #greeting .greeting__names { padding-top: 21px; font-size: 15px; }
+  #greeting .greeting__parent { font-size: 14px; }
+}
+.envelope-intro__links {justify-content:space-between;gap:20px}
+.envelope-intro__links a {min-height:48px}
+.photo-controls { display:flex; align-items:center; justify-content:center; gap:8px; margin:6px 0; }
+.photo-controls .gallery__counter { position:static; padding:0; background:none; color:var(--c-text); font-variant-numeric:tabular-nums; }
+.gallery-open { width:100%; height:100%; display:block; border:0; padding:0; background:transparent; cursor:zoom-in; }
+.gallery-open:focus-visible { outline:2px solid white; outline-offset:-3px; }
+.gallery-dialog { inset:0; margin:auto; width:100vw; height:100dvh; max-width:none; max-height:none; padding:0; border:0; background:#201b18; }
+.gallery-dialog[open] { display:grid; place-items:center; }
+.gallery-dialog img { width:100%; height:100%; min-height:0; object-fit:contain; }
+.gallery-dialog button { position:absolute; z-index:1; top:max(8px,env(safe-area-inset-top)); right:8px; width:48px; height:48px; border:0; border-radius:50%; color:white; background:#201b18dd; font-size:28px; }
+body:has(.gallery-dialog[open]) { overflow:hidden; }
+.gallery__viewer--single + .photo-controls {display:none}
+@media(prefers-reduced-motion:reduce){.envelope-intro {--reveal-length:0px}.envelope-intro__hint {visibility:hidden}}
+
+.gallery-scroll-frame{position:relative}
+.gallery-scroll-frame .gallery__grid{scrollbar-width:none;padding-inline-end:12px}
+.gallery-scroll-frame .gallery__grid::-webkit-scrollbar{display:none}
+.gallery-scroll-frame .gallery__grid:focus-visible{outline:2px solid #805840;outline-offset:-2px}
+.gallery-scroll-track{position:absolute;inset-block:5px;inset-inline-end:4px;width:4px;border-radius:4px;background:#d6bea9;pointer-events:none}
+.gallery-scroll-thumb{display:block;width:100%;height:var(--thumb-size,0px);transform:translateY(var(--thumb-offset,0px));border-radius:inherit;background:#805840}
+
+#galleryViewer :is(.swiper-button-prev, .swiper-button-next) {
+  width: 44px;
+  height: 44px;
+  top: 50%;
+  margin: 0;
+  padding: 0;
+  transform: translateY(-50%);
+  border: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(47 35 29 / .82) 0 15px, transparent 16px);
+  color: #fffaf2;
+  font: 20px/1 sans-serif;
+}
+#galleryViewer :is(.swiper-button-prev, .swiper-button-next)::after { content: none; }
+#galleryViewer :is(.swiper-button-prev, .swiper-button-next):disabled { opacity: .5; }
+#galleryViewer :is(.swiper-button-prev, .swiper-button-next):focus-visible { outline: 2px solid white; outline-offset: -4px; }

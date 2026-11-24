@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko" data-preview="booth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Invitation</title>
+
+  <!-- Open Graph (카카오톡 등 링크 미리보기) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="소중한 분들을 초대합니다">
+  <meta property="og:description" content="귀한 걸음으로 축복해 주세요&#10;4.18 규수당 문래점">
+  <meta property="og:image" content="https://lh3.googleusercontent.com/d/1pNwVhxG_xTjDUTmgFsVl1azLX0vUCOV1=d">
+  <meta property="og:url" content="https://yoonsimon.github.io/invite/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="description" content="2027년 4월 18일 일요일 오전 11시 · 규수당 문래점">
+
+  <!-- Favicon (반지 아이콘) + 모바일 메타 -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='13' cy='16' r='7.5' fill='none' stroke='%231a1a1a' stroke-width='2.4'/%3E%3Ccircle cx='19.5' cy='16' r='7.5' fill='none' stroke='%231a1a1a' stroke-width='2.4'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#f4ebe0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="청첩장">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <!-- Final styles -->
+  <link rel="stylesheet" href="../css/final.css?v=13">
+  <link rel="stylesheet" href="../css/envelope.css?v=3">
+<link rel="stylesheet" href="../selected/typography.css"><link rel="stylesheet" href="../css/interior.css"><link rel="stylesheet" href="booth.css"></head>
+<body>
+  <div class="page">
+
+  <!-- ===== 1. 커버 ===== -->
+  <section class="opening" aria-label="결혼 초대장">
+<header class="mast"><span>WEDDING INVITATION</span><time datetime="2027-04-18">SUNDAY / 2027</time></header>
+<h1 lang="en">Photo Booth</h1>
+<div class="stage"><figure class="strip"><img src="https://lh3.googleusercontent.com/d/1HcPaSbTvMWpe-kXEtI2lI-jiL-AOVOHk=d" alt="함께 선 두 사람의 웨딩 사진"><img src="https://lh3.googleusercontent.com/d/1pNwVhxG_xTjDUTmgFsVl1azLX0vUCOV1=d" alt=""><img src="https://lh3.googleusercontent.com/d/1tha3MxUsoiLb--c2gyNHKXWrR-RGGfgc=d" alt=""><figcaption>April 18, 2027 <i aria-hidden="true">♥</i></figcaption></figure><span class="sideprint" aria-hidden="true">MULLAE PHOTO STUDIO</span></div>
+<div class="signature"><p><span class="cover__groom"></span><i> &amp; </i><span class="cover__bride"></span><span class="default-name">우리, 결혼합니다</span></p><div>4월 18일 일요일 오전 11시 · 규수당 문래점 2층</div></div>
+<nav><a href="#greeting">초대장 펼쳐보기 <b>↓</b></a><a href="#location">오시는 길 ↗</a></nav></section>
+
+  <!-- ===== 2. 인사말 ===== -->
+  <section id="greeting" class="section greeting">
+    <article class="post-card">
+      <header class="post-card__header">
+        
+        <h2 class="section__title post-card__username">우리의 봄에<br>초대합니다.</h2>
+      </header>
+      <div class="section__inner post-card__body">
+        <p class="greeting__text"></p>
+        <div class="greeting__names">
+          <p></p>
+          <p></p>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===== 3. 갤러리 ===== -->
+  <section id="gallery" class="section gallery">
+    <article class="post-card">
+      <header class="post-card__header">
+        
+        <h2 class="section__title post-card__username">두 사람의 사진첩</h2>
+      </header>
+      <div class="section__inner post-card__body post-card__body--gallery">
+        <!-- 메인 뷰어 -->
+        <div class="swiper gallery__viewer" id="galleryViewer">
+          <div class="swiper-wrapper">
+            <!-- JS에서 동적 생성 -->
+          </div>
+          <button type="button" class="swiper-button-prev" aria-label="이전 사진">←</button>
+          <button type="button" class="swiper-button-next" aria-label="다음 사진">→</button>
+        </div>
+        <div class="photo-controls"></div>
+        <dialog class="gallery-dialog" aria-label="웨딩 사진 확대"><button type="button" autofocus aria-label="확대 사진 닫기">×</button><img alt="웨딩 사진 확대"></dialog>
+        <div class="gallery__grid" id="galleryGrid">
+          <!-- JS에서 동적 생성 -->
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===== 4. 예식 일시 ===== -->
+  <section id="calendar" class="section calendar">
+    <article class="post-card">
+      <header class="post-card__header">
+        
+        <h2 class="section__title post-card__username">4월의 일요일</h2>
+      </header>
+      <div class="section__inner post-card__body">
+        <p class="calendar__datetime">2027년 4월 18일 일요일 오전 11시</p>
+        <div class="calendar__grid" id="calendarGrid">
+          <!-- JS에서 동적 생성 -->
+        </div>
+        <div class="calendar__dday" id="dday"></div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===== 5. 오시는 길 ===== -->
+  <section id="location" class="section location">
+    <article class="post-card">
+      <header class="post-card__header">
+        
+        <h2 class="section__title post-card__username">오시는 길</h2>
+      </header>
+      <div class="section__inner post-card__body">
+        <p class="location__venue-name">규수당 문래점</p>
+        <p class="location__address" id="venueAddress">서울 영등포구 문래로 164 SK리더스뷰 2층</p>
+
+        <button class="location__copy-btn" id="copyAddressBtn">주소 복사</button>
+
+        <div class="location__nav-buttons">
+          <a class="location__nav-btn location__nav-btn--kakao" id="naviKakao" href="#" target="_blank" rel="noopener">
+            <svg class="location__nav-icon" viewBox="0 0 28 28" aria-hidden="true">
+              <rect width="28" height="28" rx="7" fill="#FEE500"/>
+              <path d="M14 7.5c-2.4 0-4.3 1.9-4.3 4.3 0 3.2 4.3 8.2 4.3 8.2s4.3-5 4.3-8.2c0-2.4-1.9-4.3-4.3-4.3z" fill="#3A1D1D"/>
+              <circle cx="14" cy="11.8" r="1.6" fill="#FEE500"/>
+            </svg>
+            카카오맵
+          </a>
+          <a class="location__nav-btn location__nav-btn--naver" id="naviNaver" href="#" target="_blank" rel="noopener">
+            <svg class="location__nav-icon" viewBox="0 0 28 28" aria-hidden="true">
+              <rect width="28" height="28" rx="7" fill="#03C75A"/>
+              <path d="M10 19V9l8 10V9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            네이버지도
+          </a>
+          <a class="location__nav-btn location__nav-btn--tmap" id="naviTmap" href="#" target="_blank" rel="noopener">
+            <svg class="location__nav-icon" viewBox="0 0 28 28" aria-hidden="true">
+              <rect width="28" height="28" rx="7" fill="#F2F2F2" stroke="#E2E2E2"/>
+              <path d="M8.5 10h11M14 10v9" fill="none" stroke="#1A1A1A" stroke-width="2.6" stroke-linecap="round"/>
+            </svg>
+            티맵
+          </a>
+        </div>
+        <div class="location__map" id="map"></div>
+        <p class="location__map-note" id="mapFallback" hidden>위 지도 앱 버튼으로 길을 확인할 수 있습니다.</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===== 6. 방명록 ===== -->
+  <section id="guestbook" class="section guestbook">
+    <article class="post-card">
+      <header class="post-card__header">
+        
+        <h2 class="section__title post-card__username">사진 뒤에 남기는 말</h2>
+      </header>
+      <div class="section__inner post-card__body">
+        <form class="guestbook__form" id="guestbookForm">
+          <div class="guestbook__row">
+            <input type="text" id="gbName" aria-label="이름" placeholder="이름" maxlength="10" required>
+            <input type="password" id="gbPassword" aria-label="비밀번호" placeholder="비밀번호" maxlength="10" required>
+          </div>
+          <textarea id="gbMessage" aria-label="축하 메시지" placeholder="축하 메시지를 남겨주세요" maxlength="200" required></textarea>
+          <button type="submit" class="guestbook__submit">축하 메시지 남기기</button>
+        </form>
+        <ul class="guestbook__list" id="guestbookList">
+          <!-- JS에서 동적 생성 -->
+        </ul>
+        <nav class="guestbook__pager" aria-label="방명록 페이지" hidden><button type="button" data-page="-1">이전</button><span aria-live="polite"></span><button type="button" data-page="1">다음</button></nav>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===== 7. 마음 전하기 ===== -->
+  <section id="account" class="section account">
+    <article class="post-card">
+      <header class="post-card__header">
+        
+        <h2 class="section__title post-card__username">마음 전하기</h2>
+      </header>
+      <div class="section__inner post-card__body">
+        <p class="account__subtitle">축하의 마음을 전해주세요</p>
+
+        <div class="account__group">
+          <button class="account__toggle" aria-expanded="false" aria-controls="groomAccounts" data-target="groomAccounts">
+            신랑측 계좌번호 <span class="account__arrow">▼</span>
+          </button>
+          <div class="account__details" id="groomAccounts">
+            <!-- JS에서 동적 생성 -->
+          </div>
+        </div>
+
+        <div class="account__group">
+          <button class="account__toggle" aria-expanded="false" aria-controls="brideAccounts" data-target="brideAccounts">
+            신부측 계좌번호 <span class="account__arrow">▼</span>
+          </button>
+          <div class="account__details" id="brideAccounts">
+            <!-- JS에서 동적 생성 -->
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===== 푸터 ===== -->
+  <footer class="footer">
+    <button type="button" class="share-btn" id="kakaoShareBtn">
+      <svg class="share-btn__icon" viewBox="0 0 28 28" aria-hidden="true">
+        <rect width="28" height="28" rx="7" fill="#FEE500"/>
+        <path d="M14 7.2c-3.7 0-6.7 2.3-6.7 5.2 0 1.9 1.3 3.5 3.2 4.4-.1.5-.5 1.8-.6 2.1-.1.4.1.4.3.3.2-.1 2.1-1.4 2.9-2 .3.04.6.05.9.05 3.7 0 6.7-2.3 6.7-5.2S17.7 7.2 14 7.2z" fill="#3A1D1D"/>
+      </svg>
+      카카오톡으로 공유하기
+    </button>
+    <p>With love, April 18.</p>
+  </footer>
+  </div><!-- /.page -->
+
+  <!-- Scripts (순서 고정) -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="../js/config.js?v=11"></script>
+  <script src="../js/firebase-init.js"></script>
+  <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=f8bba6bb7016e10cec2ab6108eda3f94"></script>
+  <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.5/kakao.min.js"></script>
+  <script src="../js/gallery.js?v=4"></script>
+  <script src="../js/calendar.js"></script>
+  <script src="../js/location.js?v=2"></script>
+  <script src="../js/guestbook.js"></script>
+  <script src="../js/account.js"></script>
+  <script src="../js/secret.js"></script>
+  <script src="local-book.js"></script><script src="../js/main.js"></script>
+  
+  <script src="../js/share.js?v=10"></script>
+  <script src="../js/gallery-scroll.js?v=1"></script>
+</body>
+</html>
